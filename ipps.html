@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>For IPPs · Webill Green</title>
+  <meta name="description" content="Webill Green for independent power producers: allocate every interval in a published order, sell the gap, claim curtailment with evidence and close the month once.">
+  <meta name="theme-color" content="#059669">
+  <link rel="icon" href="assets/webill-green-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="wrap site-header__inner">
+      <a class="brand" href="index.html" aria-label="Webill Green home">
+        <img src="assets/webill-green-logo.png" alt="Webill Green" width="1100" height="162">
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <a href="market.html">The market</a>
+        <a href="how-it-works.html">How it works</a>
+        <a href="ipps.html">IPPs</a>
+        <a href="off-takers.html">Off-takers</a>
+        <a href="traders.html">Traders</a>
+        <a href="carbon.html">Carbon</a>
+        <a class="site-nav__edge" href="edge.html">The Webill edge</a>
+      </nav>
+      <div class="site-header__actions">
+        <a class="btn btn--ink btn--small" href="index.html#walkthrough">Book a walkthrough</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+          <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+          Menu
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="wrap page-hero__grid">
+        <p class="page-hero__who">For independent power producers</p>
+        <h1 class="h-display page-hero__title" id="page-title">Sell the gap.</h1>
+        <p class="lede page-hero__lede">Your plant's output never matches its contracts. Webill Green allocates every interval to the right PPA in a published order, shows how much energy still needs a buyer and who could take it, lodges curtailment claims with evidence, and closes the month once, with one invoice per counterparty.</p>
+        <div class="btn-row page-hero__aside">
+          <a class="btn btn--ink" href="index.html#walkthrough">Book a walkthrough</a>
+          <a class="btn btn--ghost" href="#gap">Find your gap</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" id="gap" aria-labelledby="gap-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="gap-title">The sold price tells only part of the story.</h2>
+          <p class="lede">A plant generates 100 MWh and sells 60 of them under contract at 85 c/kWh. That achieved price looks healthy, but the debt is serviced from the realised price: the income spread across every megawatt-hour the plant makes. Webill Green shows both, for every site.</p>
+        </div>
+
+        <div class="instrument" data-gap>
+          <div class="instrument__controls">
+            <div class="slider">
+              <div class="slider__top"><label for="gap-share">Share of output sold under contract</label><output class="slider__value" data-out="share" for="gap-share">60%</output></div>
+              <input id="gap-share" name="share" type="range" min="0" max="100" step="1" value="60">
+            </div>
+            <div class="slider">
+              <div class="slider__top"><label for="gap-price">Contract price</label><output class="slider__value" data-out="price" for="gap-price">85.0 c/kWh</output></div>
+              <input id="gap-price" name="price" type="range" min="40" max="130" step="0.5" value="85">
+              <p class="slider__hint">Unsold energy earns nothing on this contract.</p>
+            </div>
+            <div>
+              <p class="label">One plant, its output as 100 equal parts</p>
+              <div class="gap-grid" data-gap-grid aria-hidden="true"></div>
+              <div class="gap-key" aria-hidden="true">
+                <span class="legend__item"><span class="swatch swatch--matched"></span>Sold under contract</span>
+                <span class="legend__item"><span class="swatch swatch--forecast"></span>Still needs a buyer</span>
+              </div>
+            </div>
+          </div>
+          <div class="instrument__result" aria-live="polite">
+            <dl class="result-pair">
+              <div><dt>Achieved price: income ÷ energy sold</dt><dd class="figure-xl" data-gap-achieved>85.0 c</dd><dd class="f">What the contract says</dd></div>
+              <div><dt>Realised price: income ÷ all output</dt><dd class="figure-xl" data-gap-realised>51.0 c</dd><dd class="f" data-gap-realised-f></dd></div>
+            </dl>
+            <ul class="build-up">
+              <li><span>Energy still to sell, a year</span><span class="v" data-gap-unsold>17,520 MWh</span></li>
+              <li class="is-total"><span>What it would earn at the contract price</span><span class="v" data-gap-value>R 14,892,000.00</span><span class="f" data-gap-value-f></span></li>
+            </ul>
+          </div>
+          <p class="instrument__note">Plant output is an illustrative solar year of 43,800 MWh. Unsold is an amount of energy, not a Rand loss: it is the gap the Sales Desk sets out to fill.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="cascade-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="cascade-title">Existing promises come before a new offer.</h2>
+          <p class="lede">Allocation rules are published and versioned. Each interval, metered generation enters at the top and fills each tier in order. Publishing a new version never recomputes a settled month.</p>
+        </div>
+
+        <div class="instrument" data-cascade>
+          <div class="instrument__controls">
+            <div class="slider">
+              <div class="slider__top"><label for="cascade-available">Energy the plant generated this interval</label><output class="slider__value" data-out="available" for="cascade-available">110 MWh</output></div>
+              <input id="cascade-available" name="available" type="range" min="0" max="160" step="1" value="110">
+              <p class="slider__hint">Drag it down to see who goes short first.</p>
+            </div>
+            <p class="cascade__note" data-cascade-note></p>
+          </div>
+          <div class="instrument__result">
+            <div class="cascade" aria-live="polite">
+              <div class="cascade__row" data-buyer="dc">
+                <div class="cascade__who"><strong>Data centre</strong><span>Priority, served first in full</span></div>
+                <div class="cascade__track"><span class="cascade__got cascade__got--priority"></span><span class="cascade__need"></span></div>
+                <div class="cascade__v"></div>
+              </div>
+              <div class="cascade__row" data-buyer="mall">
+                <div class="cascade__who"><strong>Shopping mall</strong><span>Pro rata</span></div>
+                <div class="cascade__track"><span class="cascade__got cascade__got--prorata"></span><span class="cascade__need"></span></div>
+                <div class="cascade__v"></div>
+              </div>
+              <div class="cascade__row" data-buyer="cold">
+                <div class="cascade__who"><strong>Cold store</strong><span>Pro rata</span></div>
+                <div class="cascade__track"><span class="cascade__got cascade__got--prorata"></span><span class="cascade__need"></span></div>
+                <div class="cascade__v"></div>
+              </div>
+              <div class="cascade__row" data-buyer="pool">
+                <div class="cascade__who"><strong>Trader pool</strong><span>Fixed, a cap of 20</span></div>
+                <div class="cascade__track"><span class="cascade__got cascade__got--fixed"></span><span class="cascade__need"></span></div>
+                <div class="cascade__v"></div>
+              </div>
+              <div class="cascade__row" data-buyer="surplus">
+                <div class="cascade__who"><strong>Surplus</strong><span>Still to sell</span></div>
+                <div class="cascade__track"><span class="cascade__got cascade__got--surplus"></span></div>
+                <div class="cascade__v"></div>
+              </div>
+            </div>
+            <p class="conserve"><span>Conservation check</span><span data-cascade-sum></span></p>
+          </div>
+          <p class="instrument__note">Every unit poured from the jug lands in a glass or stays in the jug. The dashed mark on each track is that buyer's demand.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" aria-labelledby="desk-title">
+      <div class="wrap feature-rows">
+        <div class="feature-row">
+          <div class="feature-row__copy">
+            <h2 class="h-sub" id="desk-title">A plant record, a trusted picture and a clear next action.</h2>
+            <div class="prose"><p>The fleet story opens on the number that matters: how much of what you generate still has no buyer. Every figure carries its coverage notes, so you know what is metered, what is forecast and what is missing.</p></div>
+            <ul class="checklist">
+              <li><strong>Installed and export capacity</strong> per site and across the fleet</li>
+              <li><strong>Sold share, realised c/kWh</strong> and the P50 revenue forecast</li>
+              <li><strong>Buyer exposure</strong> and what the risk model says</li>
+            </ul>
+          </div>
+          <figure class="plate feature-row__media">
+            <div class="plate__frame"><img src="assets/shots/ipp-fleet-sales.webp" alt="The IPP fleet screen: installed capacity, sold share, realised price against contracted, and a headline saying almost all the energy still needs a buyer." width="1120" height="700" loading="lazy"></div>
+            <figcaption><strong>IPP Sites, Fleet.</strong></figcaption>
+          </figure>
+        </div>
+
+        <div class="feature-row feature-row--flip">
+          <div class="feature-row__copy">
+            <h2 class="h-sub">The Sales Desk: five steps from gap to signed offer.</h2>
+            <div class="prose"><p>The desk starts from your gap and its market value, finds who could absorb it, builds the deal, compares profit and risk against simply holding the energy, and lets you decide with the arithmetic in front of you.</p></div>
+          </div>
+          <figure class="plate feature-row__media">
+            <div class="plate__frame"><img src="assets/shots/ipp-commercial.webp" alt="The IPP commercial workspace where a sale is built and compared." width="1120" height="700" loading="lazy"></div>
+            <figcaption><strong>Site Commercial.</strong></figcaption>
+          </figure>
+        </div>
+
+        <ol class="desk-steps" aria-label="The Sales Desk">
+          <li><b>1</b><strong>The gap</strong><span>Energy still to sell, and what it is worth on the market</span></li>
+          <li><b>2</b><strong>Who could absorb it</strong><span>Buyers whose hours fit the hours you have</span></li>
+          <li><b>3</b><strong>Build the deal</strong><span>Volume, shape, tariff and term</span></li>
+          <li><b>4</b><strong>Profit and risk</strong><span>Against holding the energy and selling it later</span></li>
+          <li><b>5</b><strong>Compare and decide</strong><span>Options side by side, then a proposal</span></li>
+        </ol>
+
+        <div class="feature-row">
+          <div class="feature-row__copy">
+            <h2 class="h-sub">Rules you can drag, check and publish.</h2>
+            <div class="prose"><p>Move a buyer between tiers, re-rank priority, type a fixed entitlement. Before you publish, the board re-runs last month's metered generation through your draft so you can see the effect. Nothing is written until you publish, and each version carries its effective date.</p></div>
+            <ul class="checklist">
+              <li><strong>Priority</strong> buyers are served first, in strict rank order</li>
+              <li><strong>Pro rata</strong> buyers share what is left in proportion to demand</li>
+              <li><strong>Fixed</strong> entitlements are caps, not delivery guarantees</li>
+            </ul>
+          </div>
+          <figure class="plate feature-row__media">
+            <div class="plate__frame"><img src="assets/shots/ipp-allocation-rules.webp" alt="The allocation rules board: versions with effective dates, the priority and pro-rata tiers, and a preview of the draft against last month." width="1120" height="700" loading="lazy"></div>
+            <figcaption><strong>Allocation, Rules.</strong></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="tou-title">
+      <div class="wrap split">
+        <div class="split__a stack-l">
+          <h2 class="h-section" id="tou-title">The right hours matter as much as the price.</h2>
+          <p class="lede">Before you sign a TOU-linked tariff, see what it does to your effective price. A solar plant makes most of its energy in standard hours, so multipliers that look generous can pay less than flat.</p>
+          <div class="prose"><p>On a 43,800 MWh solar year, multipliers of 1.3, 1.0 and 0.7 come to <strong>63.14 c/kWh</strong>, about <strong>R 812,000 a year</strong> below a flat 65 c. Webill Green runs this for your own generation profile before the deal is drafted.</p></div>
+        </div>
+        <div class="split__b">
+          <div class="doc-mini">
+            <p class="doc-mini__head">Effective price on a tiny day, base 65 c</p>
+            <table class="ledger" style="margin-top:8px">
+              <thead><tr><th scope="col">Period</th><th scope="col" class="amt">kWh</th><th scope="col" class="amt">× 65 c × multiplier</th><th scope="col" class="amt">Cents</th></tr></thead>
+              <tbody>
+                <tr><td>Peak</td><td class="amt">10</td><td class="amt">× 1.3</td><td class="amt">845</td></tr>
+                <tr><td>Standard</td><td class="amt">70</td><td class="amt">× 1.0</td><td class="amt">4,550</td></tr>
+                <tr><td>Off-peak</td><td class="amt">20</td><td class="amt">× 0.7</td><td class="amt">910</td></tr>
+              </tbody>
+              <tfoot><tr><td>Σ</td><td class="amt">100</td><td class="amt">6,305 ÷ 100</td><td class="amt">63.05 c/kWh</td></tr></tfoot>
+            </table>
+            <p class="source" style="margin-top:14px">A worked example. It comes in below the flat 65 c, because only a tenth of the energy lands in peak.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" aria-labelledby="curtail-title">
+      <div class="wrap feature-rows">
+        <div class="split">
+          <div class="split__a stack-l">
+            <h2 class="h-section" id="curtail-title">When the grid holds you back, claim it.</h2>
+            <p class="lede">Curtailment events now exceed a hundred a year, and the industry's claims backlog is near R1.5bn. A claim without evidence waits.</p>
+          </div>
+          <div class="split__b">
+            <ul class="checklist" style="margin-top:0">
+              <li><strong>Plant telemetry under consent</strong>, sampled and stored with the period it explains</li>
+              <li><strong>Curtailment traces</strong> that line up the instruction, the plant's response and the lost energy</li>
+              <li><strong>Deemed energy</strong> calculated from the forecast the plant would have met</li>
+              <li><strong>Claims lodged with the evidence attached</strong>, and their status tracked to payment</li>
+            </ul>
+            <p style="margin-top:18px"><span class="chip chip--simulated">The System Operator side is simulated until SAWEM opens</span></p>
+          </div>
+        </div>
+
+        <div class="split">
+          <div class="split__a stack-l">
+            <h2 class="h-section">Close the month once.</h2>
+            <p class="lede">One deterministic period close and one invoice per counterparty, built from the same ledger the settlement wrote.</p>
+          </div>
+          <div class="split__b">
+            <ul class="checklist" style="margin-top:0">
+              <li><strong>Each interval settles once</strong> against the contract that owns it, losses and network charges applied once</li>
+              <li><strong>One invoice per counterparty</strong>, whatever the number of sites and contracts behind it</li>
+              <li><strong>Corrections arrive as credit notes</strong>, never as edits to an issued document</li>
+              <li><strong>FINAL is final:</strong> a re-run creates a new version and keeps the old one readable</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight" aria-labelledby="next-title">
+      <div class="wrap">
+        <div class="cta-band">
+          <h2 class="h-section" id="next-title">See your fleet on the demo world.</h2>
+          <div class="btn-row"><a class="btn btn--ink" href="index.html#walkthrough">Book a walkthrough</a></div>
+          <p class="lede">Or keep reading: the platform end to end, and the market it is built for.</p>
+        </div>
+        <ul class="page-next" style="margin-top:56px">
+          <li><a href="how-it-works.html"><strong>How it works</strong><span>The seven stops, the market day and the evidence chain</span></a></li>
+          <li><a href="traders.html"><strong>For traders</strong><span>Buy from many, sell to many, through trader pools</span></a></li>
+          <li><a href="carbon.html"><strong>Carbon</strong><span>Certificates accrued from FINAL settled energy</span></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__top">
+        <div class="site-footer__brand">
+          <a class="site-footer__mark" href="index.html"><img src="assets/webill-green-mark.png" alt="" width="40" height="40"><span class="site-footer__name">Webill Green</span></a>
+          <p class="site-footer__tagline">The traded electricity platform. Meters, routes, settles, bills and proves, for every party, with each network charged once.</p>
+        </div>
+        <div class="site-footer__cols">
+          <div>
+            <h2>South Africa</h2>
+            <ul>
+              <li><a href="market.html#history">A century of electricity</a></li>
+              <li><a href="market.html#coming">The changes coming</a></li>
+              <li><a href="index.html#walkthrough">Book a walkthrough</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Platform</h2>
+            <ul>
+              <li><a href="edge.html">The Webill edge</a></li>
+              <li><a href="edge.html#rollout">The roll-out</a></li>
+              <li><a href="how-it-works.html">How it works</a></li>
+              <li><a href="how-it-works.html#evidence">Evidence and controls</a></li>
+              <li><a href="how-it-works.html#integrations">Integrations</a></li>
+              <li><a href="how-it-works.html#glossary">Glossary</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Seats</h2>
+            <ul>
+              <li><a href="ipps.html">IPPs</a></li>
+              <li><a href="off-takers.html">Off-takers</a></li>
+              <li><a href="traders.html">Traders</a></li>
+              <li><a href="carbon.html">Carbon</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer__base">
+        <p>© <span data-year>2026</span> Webill Green. South Africa. All times in SAST.</p>
+        <p>Nothing here is tax or investment advice.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/site.js" defer></script>
+  <script src="assets/instruments.js" defer></script>
+</body>
+</html>

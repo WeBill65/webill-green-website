@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How it works · Webill Green</title>
+  <meta name="description" content="How Webill Green carries a kilowatt-hour from the meter to the invoice: seven stops, the market day, the monthly rhythm, settlement to a zero-sum ledger and the evidence behind every figure.">
+  <meta name="theme-color" content="#059669">
+  <link rel="icon" href="assets/webill-green-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="wrap site-header__inner">
+      <a class="brand" href="index.html" aria-label="Webill Green home">
+        <img src="assets/webill-green-logo.png" alt="Webill Green" width="1100" height="162">
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <a href="market.html">The market</a>
+        <a href="how-it-works.html">How it works</a>
+        <a href="ipps.html">IPPs</a>
+        <a href="off-takers.html">Off-takers</a>
+        <a href="traders.html">Traders</a>
+        <a href="carbon.html">Carbon</a>
+        <a class="site-nav__edge" href="edge.html">The Webill edge</a>
+      </nav>
+      <div class="site-header__actions">
+        <a class="btn btn--ink btn--small" href="index.html#walkthrough">Book a walkthrough</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+          <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+          Menu
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="wrap page-hero__grid">
+        <p class="page-hero__who">How it works</p>
+        <h1 class="h-display page-hero__title" id="page-title">Meters. Routes.<br>Settles. Bills.<br>Proves.</h1>
+        <p class="lede page-hero__lede">Seven stops, three clocks and one ledger. This page walks the engine end to end: what each stop takes in and hands on, what runs when, and the controls that keep every figure traceable to its meter, its rate row and the rule that produced it.</p>
+        <div class="btn-row page-hero__aside">
+          <a class="btn btn--ink" href="index.html#walkthrough">Book a walkthrough</a>
+          <a class="btn btn--ghost" href="market.html">Read the market's history</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" aria-labelledby="stops-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="stops-title">Seven stops, each handing on one thing.</h2>
+          <p class="lede">Every room in the app is a stop on this road. Billing, certificates and the carbon-tax pack follow the statement.</p>
+        </div>
+        <table class="matrix" aria-describedby="stops-title">
+          <thead><tr><th scope="col">Stop</th><th scope="col">Takes in</th><th scope="col">Hands on</th><th scope="col">Where you work</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">1. Setup<small>Orgs, sites, meters, tariffs</small></th><td data-label="Takes in">Your profile, accreditations, sites, meters, tariffs and feeds</td><td data-label="Hands on">20-minute intervals from every assigned meter</td><td data-label="Where">Organization, Off-taker Sites, IPP Sites</td></tr>
+            <tr><th scope="row">2. Deal<small>Proposal to signed PPA</small></th><td data-label="Takes in">A counterparty and a proposal</td><td data-label="Hands on">An active contract, referenced <code>PPPA-</code> or <code>VPPA-</code></td><td data-label="Where">Deals</td></tr>
+            <tr><th scope="row">3. Strategy<small>Forecast, allocate, simulate</small></th><td data-label="Takes in">Forecasts, contracts and published allocation rules</td><td data-label="Hands on">Immutable allocation lines, margin and risk, every night</td><td data-label="Where">IPP Sites, Trader Pools, the desks</td></tr>
+            <tr><th scope="row">4. Nominate<small>Next month, hour by hour</small></th><td data-label="Takes in">Flexible members' volumes for next month</td><td data-label="Hands on">Binding hour-by-hour nominations</td><td data-label="Where">Trader Pools</td></tr>
+            <tr><th scope="row">5. Market day<small>Bid, clear, deviate</small></th><td data-label="Takes in">The book's net position</td><td data-label="Hands on">Bids, cleared schedules, System Operator instructions, imbalance</td><td data-label="Where">Market, Bid Desk, Month</td></tr>
+            <tr><th scope="row">6. Settle<small>Match, price, adjust</small></th><td data-label="Takes in">Meters or nominations, contract terms, loss and network tables</td><td data-label="Hands on">A ledger whose lines sum to zero</td><td data-label="Where">Deals, each site's Commercial tab</td></tr>
+            <tr><th scope="row">7. Statement<small>Who owes whom</small></th><td data-label="Takes in">The ledger</td><td data-label="Hands on">Versioned statements, then invoices and credit notes</td><td data-label="Where">Billing, Money Room</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="market-day" aria-labelledby="market-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="market-title">The market day, gate by gate.</h2>
+          <p class="lede">A trading day is 24 hourly trading periods in SAST, with no daylight saving. Your position is fixed the day before, corrected on the day and answered for the day after.</p>
+        </div>
+
+        <div class="status-board status-board--3">
+          <div class="status-col">
+            <h3 style="margin-top:0">The day before, D−1</h3>
+            <ul class="dayline-list">
+              <li><time>08:00</time><span>Standing data deadline</span></li>
+              <li><time>10:00</time><span><strong>Day-ahead gate closes</strong>, for tomorrow and the six days after: 168 periods</span></li>
+              <li><time>14:00</time><span>The Market Operator publishes prices and schedules</span></li>
+              <li><time>17:00</time><span>Credit cover assessed, each business day</span></li>
+              <li><time>18:00</time><span>First intraday auction</span></li>
+            </ul>
+          </div>
+          <div class="status-col">
+            <h3 style="margin-top:0">Delivery day, D</h3>
+            <ul class="dayline-list">
+              <li><time>00:00 to 24:00</time><span>24 trading periods in delivery; meters read every 20 minutes</span></li>
+              <li><time>00:00 to 18:00</time><span>Four more intraday auctions, at 00:00, 06:00, 12:00 and 18:00, for hours not yet delivered. Each gate closes 60 minutes before delivery</span></li>
+              <li><time>All day</time><span>System Operator instructions arrive and are answered</span></li>
+            </ul>
+          </div>
+          <div class="status-col status-col--dashed">
+            <h3 style="margin-top:0">The day after, D+1</h3>
+            <ul class="dayline-list">
+              <li><time>Morning</time><span>Imbalance priced against the schedule, hour by hour</span></li>
+              <li><time>17:00</time><span>Indicative settlement statement</span></li>
+              <li><time>+7 working days</time><span>Data verification closes</span></li>
+              <li><time>BP + 5 WD</time><span>Initial settlement statement and invoice</span></li>
+            </ul>
+          </div>
+        </div>
+        <p style="margin-top:28px"><span class="chip chip--simulated">The Market and System Operator are simulated until SAWEM opens, scheduled for April 2027</span></p>
+      </div>
+    </section>
+
+    <section class="section section--paper" aria-labelledby="month-title">
+      <div class="wrap split">
+        <div class="split__a stack-l">
+          <h2 class="h-section" id="month-title">The month, and the year.</h2>
+          <p class="lede">Behind the screens, jobs run on a published clock. Nightly runs re-forecast and settle; the 1st of the month closes the books.</p>
+        </div>
+        <div class="split__b">
+          <p class="label">Days of the month with scheduled work</p>
+          <div class="month" aria-hidden="true">
+            <span class="is-job">1</span><span>2</span><span>3</span><span class="is-job">4</span><span class="is-job">5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span class="is-job">20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span>
+          </div>
+          <ul class="month-key">
+            <li><b>1st</b><span>Month-end chain: monthly settlement, chain reconciliation, statements, certificate accrual, billing and Money Room facts</span></li>
+            <li><b>4th</b><span>Backcast: last month's forecasts scored against what happened</span></li>
+            <li><b>5th</b><span>IPP programme: forecast generation, the hierarchy and energy available for sale</span></li>
+            <li><b>20th</b><span>Nomination proposals for next month</span></li>
+            <li><b>Nightly</b><span>Re-forecast, risk and settlement of closed periods as DRAFT</span></li>
+            <li><b>July</b><span>The carbon-tax return pack, filed by the company on eFiling</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="settlement" aria-labelledby="settle-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="settle-title">Settlement, one stage at a time.</h2>
+          <p class="lede">The same five stages run for every contract and every period. Each stage's output is kept, so any figure can be walked back to the reading it came from.</p>
+        </div>
+        <ol class="pipeline" style="gap:12px">
+          <li><b>1</b><strong>Resolve</strong><small>What each meter says for the period; where no meter can speak, the binding nomination</small></li>
+          <li><b>2</b><strong>Match</strong><small>The lesser of supply and demand, interval by interval, less network losses. Sell on sent, buy on delivered</small></li>
+          <li><b>3</b><strong>Price</strong><small>The contract's terms, split across peak, standard and off-peak, at effective-dated rates</small></li>
+          <li><b>4</b><strong>Adjust</strong><small>Spill, shortfall, banking and curtailment deemed energy, each as its own line</small></li>
+          <li><b>5</b><strong>Ledger</strong><small>Double entry: every line has a partner, and the period sums to R 0.00</small></li>
+        </ol>
+        <div class="split" style="margin-top:56px">
+          <div class="split__a">
+            <p class="h-minor">Statuses move one way</p>
+            <ol class="rail" style="margin-top:12px">
+              <li><span class="rail__pill rail__pill--done">Draft</span></li>
+              <li><span class="rail__pill rail__pill--done">Preliminary</span></li>
+              <li><span class="rail__pill rail__pill--now">Final</span></li>
+            </ol>
+            <p class="prose" style="margin-top:14px">Disputed and Reversed sit beside them. A dispute reopens a period on purpose; nothing reopens silently.</p>
+          </div>
+          <div class="split__b">
+            <ul class="checklist" style="margin-top:0">
+              <li><strong>Every run creates DRAFT.</strong> DRAFT and PRELIMINARY are reversed and replaced when a period re-runs</li>
+              <li><strong>The monthly run</strong> moves DRAFT to PRELIMINARY</li>
+              <li><strong>Only a person moves PRELIMINARY to FINAL.</strong> Nothing finalises on a timer</li>
+              <li><strong>FINAL is never overwritten.</strong> A correction is a new version, and the old one stays readable</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" id="evidence" aria-labelledby="evidence-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="evidence-title">Evidence and controls.</h2>
+          <p class="lede">Show the working is a product rule, not a slogan. Conservation checks, audit trails and packs that rebuild are screens in their own right, and nothing is marked ready while evidence is missing.</p>
+        </div>
+        <ul class="integrations">
+          <li><strong>Rates are effective-dated</strong><p>Tariffs, loss factors and network charges carry the dates they apply. A period always settles against the rates of its own dates.</p></li>
+          <li><strong>Versions, never edits</strong><p>A FINAL calculation is superseded by a new version. An issued invoice is corrected by a credit note.</p></li>
+          <li><strong>Packs that rebuild identically</strong><p>Statements, month packs and carbon-tax packs carry a SHA-256 audit index. Rebuild one from the same evidence and you get the same bytes.</p></li>
+          <li><strong>Four eyes where money or risk moves</strong><p>Risk limits, the kill switch and the automation level change only when a second person approves.</p></li>
+          <li><strong>Engines compute, humans confirm</strong><p>AI drafts, explains and proposes. Deterministic engines calculate. People approve. There are no silent AI decisions.</p></li>
+          <li><strong>Missing is not zero</strong><p>A stale meter is flagged before any Rand figure is shown, and missing information never counts as zero delivery.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="deals-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="deals-title">Eight deal types, one engine.</h2>
+          <p class="lede">Four pairs of parties, each physical or virtual. Every one settles on the same pipeline and lands on the same ledger.</p>
+        </div>
+        <table class="matrix">
+          <thead><tr><th scope="col">Who contracts with whom</th><th scope="col">Physical PPA, <code>PPPA-</code></th><th scope="col">Virtual PPA, <code>VPPA-</code></th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Off-taker buys from an IPP<small>OFFTAKER_IPP</small></th><td data-label="Physical">Wheeled from the IPP's meter to the off-taker's, matched each interval</td><td data-label="Virtual">A contract for difference against a reference, such as Eskom's refund credit</td></tr>
+            <tr><th scope="row">Off-taker buys from a trader<small>OFFTAKER_TRADER</small></th><td data-label="Physical">Delivered from the trader's pool</td><td data-label="Virtual">A contract for difference with the trader</td></tr>
+            <tr><th scope="row">Trader buys from an IPP<small>TRADER_IPP</small></th><td data-label="Physical">The IPP sells into the trader's pool</td><td data-label="Virtual">A contract for difference between IPP and trader</td></tr>
+            <tr><th scope="row">Trader buys from a trader<small>TRADER_TRADER</small></th><td data-label="Physical">One pool sells to another, mid-chain</td><td data-label="Virtual">A contract for difference between two books</td></tr>
+          </tbody>
+        </table>
+
+        <div class="split" style="margin-top:56px">
+          <div class="split__a stack-l">
+            <h2 class="h-sub">How a virtual PPA settles.</h2>
+            <p class="prose">The buyer stays on the grid and receives Eskom's credit for the wheeled energy. The contract for difference closes the gap to the agreed strike, so the buyer's effective price is the strike. If the credit is above the strike, the seller pays.</p>
+          </div>
+          <div class="split__b">
+            <div class="doc-mini">
+              <p class="doc-mini__head">Contract for difference, 250,000 kWh consumed</p>
+              <ul class="build-up" style="margin-top:4px">
+                <li><span>Eskom credit</span><span class="v">R 180,000.00</span><span class="f">R 0.72 × 250,000 kWh</span></li>
+                <li><span>CfD paid to the seller</span><span class="v">R 82,500.00</span><span class="f">(R 1.05 strike − R 0.72 credit) × 250,000 kWh</span></li>
+                <li class="is-total"><span>Effective cost</span><span class="v">R 262,500.00</span><span class="f">= R 1.05 × 250,000 kWh, the strike exactly</span></li>
+              </ul>
+              <p class="source" style="margin-top:12px">A worked example. The generator's output is not used in this calculation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" id="integrations" aria-labelledby="int-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="int-title">Where it connects.</h2>
+          <p class="lede">Webill Green is the client side of every institution it touches. It never runs their systems, and says plainly which links are live.</p>
+        </div>
+        <ul class="integrations">
+          <li><strong>SAWEM</strong><p>Bids, schedules, metering, imbalance and settlement statements, through gateways to the Market and System Operator. Clearing is never touched.</p><span class="chip chip--waiting">Live link waits on the operator's interface</span></li>
+          <li><strong>Eskom</strong><p>The Virtual Wheeling account register, refund credit notes and their 45-day aging, tariffs, loss factors, network charges and fuel prices.</p><span class="chip chip--built">Built</span></li>
+          <li><strong>Municipalities</strong><p>Municipal tariffs, wheeling charges and wheeling contracts. Municipal accreditation gates which trader pools can operate where.</p><span class="chip chip--built">Built</span></li>
+          <li><strong>SARS</strong><p>A deterministic DA 180 working pack with pre-filled DA 185 schedules. The taxpayer files; the platform stops at the bytes.</p><span class="chip chip--planned">Planned release</span></li>
+          <li><strong>SAPP</strong><p>A participant toolkit for the Southern African Power Pool: trades, positions, nominations checked against transfer capacity, and a shadow monthly statement.</p><span class="chip chip--simulated">Simulated counterpart</span></li>
+          <li><strong>API and webhooks</strong><p>An OAuth API under <code>/api/v1</code> for registry, submissions, meter readings, statements and invoices, with webhook deliveries that are idempotent and retried.</p><span class="chip chip--built">Built</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="glossary" aria-labelledby="glossary-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="glossary-title">The terms, in plain words.</h2>
+          <p class="lede">The same words are used on every screen and in every statement.</p>
+        </div>
+        <dl class="glossary">
+          <div><dt>Wheeling</dt><dd>Moving energy across the shared grid from a seller's connection to a buyer's. The network delivers; the contracts decide who pays whom. Also the c/kWh charge for doing it.</dd></div>
+          <div><dt>Landed cost</dt><dd>Contract price ÷ loss factor + network charges: the all-in cost per kWh at the buyer's meter, held against the grid tariff.</dd></div>
+          <div><dt>TOU</dt><dd>Time of use: peak, standard and off-peak periods on the SAST calendar. Tariffs price by period and settlement splits energy across them.</dd></div>
+          <div><dt>Interval</dt><dd>A 20-minute energy quantity, the grain of classic wheeling. Virtual Wheeling uses 15-minute quarter-hours.</dd></div>
+          <div><dt>TLF and DLF</dt><dd>Transmission and distribution loss factors from Eskom's effective-dated tables. Sell on sent, buy on delivered.</dd></div>
+          <div><dt>UoS</dt><dd>Use-of-system charges for the transmission and distribution networks.</dd></div>
+          <div><dt>Physical PPA</dt><dd>Energy matched interval by interval, with losses and network charges, referenced PPPA-.</dd></div>
+          <div><dt>Virtual PPA</dt><dd>A financial hedge settled as a contract for difference, referenced VPPA-.</dd></div>
+          <div><dt>Virtual Wheeling account</dt><dd>One Eskom account with many generators and meters, credited monthly with one consolidated refund at 15-minute grain.</dd></div>
+          <div><dt>Wheeled Energy Refund</dt><dd>Eskom's credit on matched consumption, paid within 45 days.</dd></div>
+          <div><dt>Spill</dt><dd>Energy generated or contracted but not used under the contract. Unused contracted energy earns the spill credit, 40 c/kWh by default.</dd></div>
+          <div><dt>Banking</dt><dd>Carrying unconsumed wheeled energy forward as a credit, drawn oldest first.</dd></div>
+          <div><dt>Trader pool</dt><dd>A licensed trader's vehicle with no meter: it buys from generators and sells to consumers.</dd></div>
+          <div><dt>Nomination</dt><dd>A binding monthly, hour-by-hour declaration by flexible members, read by settlement where no meter can speak.</dd></div>
+          <div><dt>BRP</dt><dd>Balance Responsible Party: the seat financially accountable for schedule against metered actuals. One registration per organisation.</dd></div>
+          <div><dt>SAWEM</dt><dd>The South African Wholesale Electricity Market: day-ahead and intraday hourly auctions at one clearing price, run by the Market Operator within the System Operator's limits.</dd></div>
+          <div><dt>DAM and IDM</dt><dd>The day-ahead market, bid before 10:00 the day before for 168 periods, and the intraday market, five auctions that move only undelivered hours.</dd></div>
+          <div><dt>SMP</dt><dd>System Marginal Price: the single clearing price per hour that everyone trades at. Your offer decides whether you clear, not what you are paid.</dd></div>
+          <div><dt>Imbalance</dt><dd>The difference between contracted and metered energy per trading period, priced after delivery.</dd></div>
+          <div><dt>Statement</dt><dd>The immutable, content-hashed, versioned view of the ledger for one party.</dd></div>
+          <div><dt>REC</dt><dd>A renewable electricity certificate for 1 MWh, accrued from FINAL settlement. The platform mirrors the registry; it is not one.</dd></div>
+          <div><dt>COAS</dt><dd>The South African list a carbon credit must be on before surrendering it can reduce carbon tax.</dd></div>
+          <div><dt>Money Room</dt><dd>The organisation's energy profit and loss, built from documents rather than guesses.</dd></div>
+          <div><dt>Seat</dt><dd>A sign-in persona in one app. One organisation can hold several roles at once.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section section--paper section--tight" aria-labelledby="next-title">
+      <div class="wrap">
+        <div class="cta-band">
+          <h2 class="h-section" id="next-title">See the engine run a month.</h2>
+          <div class="btn-row"><a class="btn btn--ink" href="index.html#walkthrough">Book a walkthrough</a></div>
+          <p class="lede">The demo world runs a market month in seconds, on the same pipeline.</p>
+        </div>
+        <ul class="page-next" style="margin-top:56px">
+          <li><a href="ipps.html"><strong>For IPPs</strong><span>Sell the gap</span></a></li>
+          <li><a href="off-takers.html"><strong>For off-takers</strong><span>Pay less, and greener</span></a></li>
+          <li><a href="traders.html"><strong>For traders</strong><span>Buy from many, sell to many</span></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__top">
+        <div class="site-footer__brand">
+          <a class="site-footer__mark" href="index.html"><img src="assets/webill-green-mark.png" alt="" width="40" height="40"><span class="site-footer__name">Webill Green</span></a>
+          <p class="site-footer__tagline">The traded electricity platform. Meters, routes, settles, bills and proves, for every party, with each network charged once.</p>
+        </div>
+        <div class="site-footer__cols">
+          <div>
+            <h2>South Africa</h2>
+            <ul>
+              <li><a href="market.html#history">A century of electricity</a></li>
+              <li><a href="market.html#coming">The changes coming</a></li>
+              <li><a href="index.html#walkthrough">Book a walkthrough</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Platform</h2>
+            <ul>
+              <li><a href="edge.html">The Webill edge</a></li>
+              <li><a href="edge.html#rollout">The roll-out</a></li>
+              <li><a href="how-it-works.html">How it works</a></li>
+              <li><a href="how-it-works.html#evidence">Evidence and controls</a></li>
+              <li><a href="how-it-works.html#integrations">Integrations</a></li>
+              <li><a href="how-it-works.html#glossary">Glossary</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Seats</h2>
+            <ul>
+              <li><a href="ipps.html">IPPs</a></li>
+              <li><a href="off-takers.html">Off-takers</a></li>
+              <li><a href="traders.html">Traders</a></li>
+              <li><a href="carbon.html">Carbon</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer__base">
+        <p>© <span data-year>2026</span> Webill Green. South Africa. All times in SAST.</p>
+        <p>Nothing here is tax or investment advice.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/site.js" defer></script>
+</body>
+</html>

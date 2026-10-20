@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carbon · Webill Green</title>
+  <meta name="description" content="Webill Green for carbon: renewable certificates accrued from settled energy, a carbon market venue, and a carbon-tax return pack that rebuilds from its evidence.">
+  <meta name="theme-color" content="#059669">
+  <link rel="icon" href="assets/webill-green-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="wrap site-header__inner">
+      <a class="brand" href="index.html" aria-label="Webill Green home">
+        <img src="assets/webill-green-logo.png" alt="Webill Green" width="1100" height="162">
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <a href="market.html">The market</a>
+        <a href="how-it-works.html">How it works</a>
+        <a href="ipps.html">IPPs</a>
+        <a href="off-takers.html">Off-takers</a>
+        <a href="traders.html">Traders</a>
+        <a href="carbon.html">Carbon</a>
+        <a class="site-nav__edge" href="edge.html">The Webill edge</a>
+      </nav>
+      <div class="site-header__actions">
+        <a class="btn btn--ink btn--small" href="index.html#walkthrough">Book a walkthrough</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+          <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+          Menu
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="wrap page-hero__grid">
+        <p class="page-hero__who">For carbon leads, emitters and buyers of clean power</p>
+        <h1 class="h-display page-hero__title" id="page-title">Certificates you can prove. A tax return you can print.</h1>
+        <p class="lede page-hero__lede">Webill Green accrues renewable certificates from settled energy, mirrors them from the registry, trades certificates and credits on its carbon venue, and turns a year of facility activity into a carbon-tax return pack. The company reviews, signs and files.</p>
+        <div class="btn-row page-hero__aside">
+          <a class="btn btn--ink" href="index.html#walkthrough">Book a walkthrough</a>
+          <a class="btn btn--ghost" href="#tax">Estimate a liability</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper section--tight" aria-labelledby="measures-title">
+      <div class="wrap">
+        <div class="section-head" style="margin-bottom:40px">
+          <h2 class="h-section" id="measures-title">Three different measures, never mixed.</h2>
+        </div>
+        <div class="status-board status-board--3">
+          <div class="status-col">
+            <h3 style="margin-top:0">1 REC = 1 MWh</h3>
+            <p>A renewable electricity attribute, used for a renewable-energy claim once it is retired. Accrued from FINAL settled energy, issued in zaRECs or I-REC.</p>
+          </div>
+          <div class="status-col">
+            <h3 style="margin-top:0">1 carbon credit = 1 tCO₂e</h3>
+            <p>A registry-issued reduction or removal from a registered project. Whether it reduces tax depends on the project and the surrender evidence. Never minted from a REC.</p>
+          </div>
+          <div class="status-col status-col--dashed">
+            <h3 style="margin-top:0">Avoided emissions</h3>
+            <p>A reporting estimate: a calculated comparison. It is not an issued credit and not a tax offset.</p>
+          </div>
+        </div>
+        <p class="lede" style="margin-top:40px">So a renewable electricity certificate does not reduce carbon tax, and the platform never lets one stand in for the other.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="certs-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="certs-title">A mirror, not a registry.</h2>
+          <p class="lede">Certificates accrue in whole megawatt-hours from FINAL settlement; the remainder carries forward to next month. The registry stays the record. Webill Green mirrors it and keeps a custody ledger of every lot and movement.</p>
+        </div>
+
+        <div class="instrument" data-certs>
+          <div class="instrument__controls">
+            <div class="slider">
+              <div class="slider__top"><label for="c-mwh">FINAL renewable energy this month</label><output class="slider__value" data-out="mwh" for="c-mwh">2.5 MWh</output></div>
+              <input id="c-mwh" name="mwh" type="range" min="0" max="12" step="0.1" value="2.5">
+            </div>
+            <div class="slider">
+              <div class="slider__top"><label for="c-carry">Carried in from last month</label><output class="slider__value" data-out="carry" for="c-carry">0.4 MWh</output></div>
+              <input id="c-carry" name="carry" type="range" min="0" max="0.9" step="0.1" value="0.4">
+            </div>
+          </div>
+          <div class="instrument__result" aria-live="polite">
+            <p class="label">Certificates this month, and what carries</p>
+            <div class="certs" data-certs-tiles></div>
+            <p class="h-minor" style="margin-top:18px" data-certs-sum></p>
+            <p class="small" style="margin-top:12px;color:var(--ink-2)" data-certs-split></p>
+          </div>
+          <p class="instrument__note">Worked example: 2.5 MWh FINAL plus 0.4 carried gives 2 certificates and 0.9 carried. Shares go to buyers by largest remainder, so every certificate lands with someone and none is split.</p>
+        </div>
+
+        <div class="feature-row" style="margin-top:clamp(64px,8vw,112px)">
+          <div class="feature-row__copy">
+            <h2 class="h-sub">From issued asset to supported claim.</h2>
+            <div class="prose"><p>Know what you hold, what is blocked and which step turns an asset into a claim you can defend.</p></div>
+            <ol class="rail" style="margin-top:20px">
+              <li><span class="rail__pill rail__pill--done">Accrued</span></li>
+              <li><span class="rail__pill rail__pill--done">Reviewed</span></li>
+              <li><span class="rail__pill rail__pill--done">Submitted</span></li>
+              <li><span class="rail__pill rail__pill--done">Issued</span></li>
+              <li><span class="rail__pill rail__pill--done">Allocated</span></li>
+              <li><span class="rail__pill rail__pill--now">Retired</span></li>
+            </ol>
+            <ul class="checklist">
+              <li><strong>Serial ranges, splits and custody movements</strong> on a double-entry ledger</li>
+              <li><strong>Five rules against double counting</strong>, checked before a claim is made</li>
+              <li><strong>Registry writes are guided steps a person completes</strong> until registries publish write APIs</li>
+            </ul>
+          </div>
+          <figure class="plate feature-row__media">
+            <div class="plate__frame"><img src="assets/shots/cert-overview.webp" alt="The Certificates overview: RECs and carbon credits held, what to do next, and the three different measures explained." width="1152" height="1069" loading="lazy"></div>
+            <figcaption><strong>Certificates.</strong> Registry connectors are simulated.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" aria-labelledby="venue-title">
+      <div class="wrap feature-rows">
+        <div class="feature-row feature-row--flip">
+          <div class="feature-row__copy">
+            <h2 class="h-sub" id="venue-title">A venue for certificates and credits.</h2>
+            <div class="prose"><p>Discover listings, place orders, run a request for quotes or an auction, or negotiate privately. Lots that are listed or pledged cannot be committed twice.</p></div>
+            <ul class="checklist">
+              <li><strong>Bilateral trades</strong> alongside listings, orders and matching</li>
+              <li><strong>RFQs and auctions</strong> for larger parcels</li>
+              <li><strong>Admission</strong> before a participant can trade</li>
+            </ul>
+            <p style="margin-top:18px"><span class="chip">Webill Green offers no carbon derivatives</span></p>
+          </div>
+          <figure class="plate feature-row__media">
+            <div class="plate__frame"><img src="assets/shots/carbon-market.webp" alt="The carbon market: firm offers of carbon credits and renewable certificates with registry, vintage and verification status, beside guidance for tax offsets and renewable-energy claims." width="1152" height="994" loading="lazy"></div>
+            <figcaption><strong>Carbon Market.</strong></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tax" aria-labelledby="tax-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="tax-title">The July return becomes a printout.</h2>
+          <p class="lede">The tax is R 308 a tonne in 2026 and filed each July. Allowances shield most tonnes; offsets shield more, up to a cap. The arithmetic is fixed by law, so the platform does it by fixed rules, not by artificial intelligence.</p>
+        </div>
+
+        <div class="instrument" data-ctax>
+          <div class="instrument__head">
+            <div class="segmented" role="group" aria-label="Worked examples">
+              <button type="button" data-preset="cement" aria-pressed="true">A cement maker</button>
+              <button type="button" data-preset="peaker" aria-pressed="false">A diesel peaker</button>
+            </div>
+          </div>
+          <div class="instrument__controls">
+            <div class="slider">
+              <div class="slider__top"><label for="x-comb">Fuel combustion emissions</label><output class="slider__value" data-out="combustion" for="x-comb">100,000 t</output></div>
+              <input id="x-comb" name="combustion" type="range" min="0" max="200000" step="0.01" value="100000">
+            </div>
+            <div class="slider">
+              <div class="slider__top"><label for="x-proc">Process emissions</label><output class="slider__value" data-out="process" for="x-proc">50,000 t</output></div>
+              <input id="x-proc" name="process" type="range" min="0" max="100000" step="100" value="50000">
+            </div>
+            <div class="slider">
+              <div class="slider__top"><label for="x-fug">Fugitive emissions</label><output class="slider__value" data-out="fugitive" for="x-fug">10,000 t</output></div>
+              <input id="x-fug" name="fugitive" type="range" min="0" max="50000" step="100" value="10000">
+            </div>
+            <label class="check"><input type="checkbox" name="offsets" checked> Surrender offsets up to the cap: 15% on combustion, 10% on process and fugitive</label>
+          </div>
+          <div class="instrument__result" aria-live="polite">
+            <p class="label">Carbon tax for the year, at R 308 a tonne</p>
+            <div class="result-big"><span class="figure-xl" data-ctax-total>R 13,244,000.00</span></div>
+            <p class="small" style="margin-top:6px;color:var(--ink-2)" data-ctax-taxable></p>
+            <ul class="build-up" data-ctax-lines></ul>
+          </div>
+          <p class="instrument__note">Worked examples using the 2026 parameters: a 60% basic allowance, offsets capped at 15% and 10%, R 308 a tonne. A working estimate to understand the calculation, not tax advice; trade-exposure and performance allowances are left out here.</p>
+        </div>
+
+        <div class="split" style="margin-top:clamp(64px,8vw,112px)">
+          <div class="split__a stack-l">
+            <h2 class="h-sub">The year, then the pack.</h2>
+            <ol class="mclock mclock--3" style="margin-top:28px">
+              <li><time>Jan to Dec 2026</time><span>Emit, and record activity with its evidence</span></li>
+              <li><time>Jan to Jun 2027</time><span>Close the gaps, freeze a FINAL assessment</span></li>
+              <li class="is-gate"><time>July 2027</time><span>Prepare the pack, then file and pay on eFiling</span></li>
+            </ol>
+          </div>
+          <div class="split__b">
+            <ul class="checklist" style="margin-top:0">
+              <li><strong>A working PDF, annexure CSVs and a SHA-256 audit index</strong> for every facility</li>
+              <li><strong>Pre-filled DA 185 schedules</strong> beside the DA 180 working pack</li>
+              <li><strong>Marking a return ready is a check, not a button:</strong> it needs a taxpayer profile, a FINAL assessment, a licence, full activity coverage and the evidence</li>
+              <li><strong>Webill Green stops at the bytes.</strong> It holds no SARS credentials and never submits; whoever types the return into eFiling is copying, not interpreting</li>
+            </ul>
+            <p style="margin-top:18px"><span class="chip chip--planned">Planned: prototyped and tested, not yet commercially released</span></p>
+          </div>
+        </div>
+
+        <figure class="plate" style="margin-top:clamp(56px,7vw,96px)">
+          <div class="plate__frame"><img src="assets/shots/ctax-returns.webp" alt="Return packs for a carbon-tax year: a FINAL assessment, facilities ready to prepare, and saved packs ready to review and download." width="1152" height="1003" loading="lazy"></div>
+          <figcaption><strong>Carbon Tax, Return packs.</strong></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section--paper section--tight" aria-labelledby="next-title">
+      <div class="wrap">
+        <div class="cta-band">
+          <h2 class="h-section" id="next-title">Walk a carbon year on the demo world.</h2>
+          <div class="btn-row"><a class="btn btn--ink" href="index.html#walkthrough">Book a walkthrough</a></div>
+          <p class="lede">Or keep reading: the evidence chain, and the market these rules belong to.</p>
+        </div>
+        <ul class="page-next" style="margin-top:56px">
+          <li><a href="how-it-works.html#evidence"><strong>Evidence and controls</strong><span>Hashed packs, versions and four-eyes approvals</span></a></li>
+          <li><a href="off-takers.html"><strong>For off-takers</strong><span>The Scope 2 statement and the certificates behind it</span></a></li>
+          <li><a href="index.html"><strong>Overview</strong><span>The whole platform on one page</span></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__top">
+        <div class="site-footer__brand">
+          <a class="site-footer__mark" href="index.html"><img src="assets/webill-green-mark.png" alt="" width="40" height="40"><span class="site-footer__name">Webill Green</span></a>
+          <p class="site-footer__tagline">The traded electricity platform. Meters, routes, settles, bills and proves, for every party, with each network charged once.</p>
+        </div>
+        <div class="site-footer__cols">
+          <div>
+            <h2>South Africa</h2>
+            <ul>
+              <li><a href="market.html#history">A century of electricity</a></li>
+              <li><a href="market.html#coming">The changes coming</a></li>
+              <li><a href="index.html#walkthrough">Book a walkthrough</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Platform</h2>
+            <ul>
+              <li><a href="edge.html">The Webill edge</a></li>
+              <li><a href="edge.html#rollout">The roll-out</a></li>
+              <li><a href="how-it-works.html">How it works</a></li>
+              <li><a href="how-it-works.html#evidence">Evidence and controls</a></li>
+              <li><a href="how-it-works.html#integrations">Integrations</a></li>
+              <li><a href="how-it-works.html#glossary">Glossary</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Seats</h2>
+            <ul>
+              <li><a href="ipps.html">IPPs</a></li>
+              <li><a href="off-takers.html">Off-takers</a></li>
+              <li><a href="traders.html">Traders</a></li>
+              <li><a href="carbon.html">Carbon</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer__base">
+        <p>© <span data-year>2026</span> Webill Green. South Africa. All times in SAST.</p>
+        <p>Nothing here is tax or investment advice.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/site.js" defer></script>
+  <script src="assets/instruments.js" defer></script>
+</body>
+</html>

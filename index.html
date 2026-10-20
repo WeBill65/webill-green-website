@@ -1,0 +1,937 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Webill Green · The Traded Electricity Platform</title>
+  <meta name="description" content="Webill Green meters, routes, settles and bills traded electricity for IPPs, off-takers and traders in South Africa, and prepares the carbon-tax return for companies that emit.">
+  <meta name="theme-color" content="#059669">
+  <link rel="icon" href="assets/webill-green-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="wrap site-header__inner">
+      <a class="brand" href="index.html" aria-label="Webill Green home">
+        <img src="assets/webill-green-logo.png" alt="Webill Green" width="1100" height="162">
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <a href="market.html">The market</a>
+        <a href="how-it-works.html">How it works</a>
+        <a href="ipps.html">IPPs</a>
+        <a href="off-takers.html">Off-takers</a>
+        <a href="traders.html">Traders</a>
+        <a href="carbon.html">Carbon</a>
+        <a class="site-nav__edge" href="edge.html">The Webill edge</a>
+      </nav>
+      <div class="site-header__actions">
+        <a class="btn btn--ink btn--small" href="#walkthrough">Book a walkthrough</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+          <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+          Menu
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Hero: today's trading day, live in SAST -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="hero__top">
+          <h1 class="h-display hero__title" id="hero-title">From the meter to the invoice, on one ledger.</h1>
+
+          <div class="hero__clock" data-clock aria-live="off">
+            <div>
+              <p class="clock__city">Johannesburg</p>
+              <p class="clock__time"><span data-clock-time>--:--</span><span class="clock__zone">SAST</span></p>
+            </div>
+            <div class="clock__lines">
+              <p class="clock__line clock__line--now">Trading period&nbsp;<strong data-clock-period>--</strong>&nbsp;of 24 is in delivery</p>
+              <p class="clock__line" data-clock-gate>Next day-ahead gate at 10:00 SAST</p>
+              <p class="clock__line" data-clock-idm>Next intraday auction</p>
+              <p class="clock__honest">SAWEM is scheduled to open in April 2027. Until then, market lines run on the simulator.</p>
+            </div>
+          </div>
+
+          <p class="lede hero__lede">Webill Green is one of very few platforms built to run South Africa's electricity trade end to end. It meters, routes, settles and bills for independent power producers, off-takers and traders, and prepares the carbon-tax return for companies that emit, all on one record every party can check.</p>
+
+          <div class="btn-row hero__ctas">
+            <a class="btn btn--ink" href="#walkthrough">Book a walkthrough</a>
+            <a class="btn btn--ghost" href="edge.html">See the Webill edge</a>
+          </div>
+        </div>
+
+        <div class="day" data-day>
+          <div class="day__meta">
+            <p class="day__title"><span data-day-date>Today</span> <span>· one contract, hour by hour</span></p>
+            <div class="legend" aria-hidden="true">
+              <span class="legend__item"><span class="swatch swatch--matched"></span>Matched to the buyer</span>
+              <span class="legend__item"><span class="swatch swatch--surplus"></span>Surplus, sold day-ahead</span>
+              <span class="legend__item"><span class="swatch swatch--short"></span>Bought from the grid</span>
+              <span class="legend__item"><span class="swatch swatch--demand"></span>Buyer's demand</span>
+              <span class="legend__item"><span class="swatch swatch--forecast"></span>Forecast, not yet metered</span>
+            </div>
+          </div>
+
+          <div class="day__chart" data-day-chart>
+            <div class="day__cols" role="group" aria-label="Trading periods for today. Select an hour to see its working." data-day-cols></div>
+            <svg class="day__overlay" data-day-overlay preserveAspectRatio="none" aria-hidden="true"></svg>
+          </div>
+          <div class="day__axis" aria-hidden="true" data-day-axis></div>
+          <div class="day__tou" aria-hidden="true" data-day-tou></div>
+          <div class="day__tou-key" aria-hidden="true">
+            <span class="legend__item"><span class="swatch tou--offpeak"></span>Off-peak</span>
+            <span class="legend__item"><span class="swatch tou--standard"></span>Standard</span>
+            <span class="legend__item"><span class="swatch tou--peak"></span>Peak</span>
+            <span class="legend__item" data-day-season>Eskom TOU periods for today</span>
+          </div>
+
+          <article class="working" data-working aria-live="polite">
+            <header class="working__head">
+              <h2 class="working__when" data-w-when>Select an hour</h2>
+              <div class="working__state" data-w-state></div>
+            </header>
+            <div class="working__energy">
+              <h3>The energy</h3>
+              <ol class="steps" data-w-energy></ol>
+            </div>
+            <div class="working__money">
+              <h3>The ledger for this hour</h3>
+              <table class="ledger" data-w-ledger>
+                <thead><tr><th scope="col">Party</th><th scope="col">Line</th><th scope="col" class="amt">Amount</th></tr></thead>
+                <tbody></tbody>
+                <tfoot></tfoot>
+              </table>
+            </div>
+            <p class="working__note">Illustrative contract: a hybrid solar-and-wind farm sells to a factory at 85.0&nbsp;c/kWh, wheeled over Eskom's network and a municipal network. Today's generation and demand are modelled, not metered. Prices, losses and the grid comparison follow the platform's worked examples.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Webill Green: the whole chain, and why it is ahead -->
+    <section class="section section--wash" id="ahead" aria-labelledby="ahead-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="ahead-title">Others handle a slice. Webill Green carries the whole trade.</h2>
+          <p class="lede">A traded kilowatt-hour needs ten jobs done, in order, for every party, every month. Webill Green is one of very few platforms built to do all ten, and the only one we know of that does them on a single ledger.</p>
+        </div>
+
+        <figure class="cover" aria-labelledby="cover-cap">
+          <div class="cover__grid">
+            <p class="cover__field" style="grid-column:2 / span 3">Wheeling and matching software</p>
+            <p class="cover__field" style="grid-column:5 / span 1">Virtual Wheeling data platforms</p>
+            <p class="cover__field cover__field--mo" style="grid-column:6 / span 1">The Market Operator's exchange</p>
+            <p class="cover__field" style="grid-column:8 / span 1">Billing systems</p>
+            <p class="cover__field" style="grid-column:9 / span 1">Certificate registries</p>
+
+            <ol class="cover__steps">
+              <li><strong>Contract</strong><small>PPAs, proposals, signatures</small></li>
+              <li><strong>Meter</strong><small>20-minute intervals</small><span class="cover__also">Also covered by wheeling and matching software</span></li>
+              <li><strong>Allocate</strong><small>Published rules, every interval</small><span class="cover__also">Also covered by wheeling and matching software</span></li>
+              <li><strong>Wheel</strong><small>Eskom and municipal, each once</small><span class="cover__also">Also covered by wheeling and matching software</span></li>
+              <li><strong>Refund</strong><small>Eskom Virtual Wheeling</small><span class="cover__also">Also covered by Virtual Wheeling data platforms</span></li>
+              <li><strong>Trade</strong><small>Day-ahead, intraday, imbalance</small><span class="cover__also">The Market Operator runs the exchange; Webill Green is your side of it</span></li>
+              <li><strong>Settle</strong><small>A ledger that sums to zero</small></li>
+              <li><strong>Bill</strong><small>Statements, invoices, credit notes</small><span class="cover__also">Also covered by billing systems</span></li>
+              <li><strong>Certify</strong><small>Certificates and the carbon venue</small><span class="cover__also">Registries issue; Webill Green mirrors and trades</span></li>
+              <li class="is-planned"><strong>Report</strong><small>The carbon-tax return pack</small><span class="cover__also">Planned release</span></li>
+            </ol>
+
+            <p class="cover__bar"><span class="cover__bar-live">Webill Green: all ten jobs, on one ledger</span><span class="cover__bar-planned" aria-hidden="true"></span></p>
+          </div>
+          <figcaption class="cover__cap" id="cover-cap">Each kind of tool covers part of the chain, and spreadsheets carry the trade between them. Webill Green carries it the whole way. The exchange itself belongs to the Market Operator, and the carbon-tax pack, drawn dashed, is prototyped and tested but not yet released.</figcaption>
+        </figure>
+
+        <ul class="reasons">
+          <li>
+            <h3 class="h-sub">One ledger for the whole book.</h3>
+            <p>Bilateral PPAs, Eskom Virtual Wheeling, wholesale trades and carbon settle in one engine. The month closes once, and every party sees the same figures.</p>
+            <a class="text-link" href="#ledger">See a settled day</a>
+          </li>
+          <li>
+            <h3 class="h-sub">Both networks, each charging once.</h3>
+            <p>Routes run across Eskom's network and the municipalities', with each network's losses and charges applied exactly once, and every charge paired on the ledger.</p>
+            <a class="text-link" href="#ledger">Follow the route</a>
+          </li>
+          <li>
+            <h3 class="h-sub">Ready for the wholesale market before it opens.</h3>
+            <p>The participant side of SAWEM is built to Market Code revision 2.3: day-ahead and intraday bids, credit cover, imbalance and settlement statements, rehearsed every day on a 50-participant simulator. The live link waits only on the Market Operator's interface.</p>
+            <a class="text-link" href="how-it-works.html#market-day">The market day, gate by gate</a>
+          </li>
+          <li>
+            <h3 class="h-sub">Neutral, so every party can use it.</h3>
+            <p>Webill Green is not a generator, a trader or a wires owner. A trader's platform serves its own book; Webill Green settles for the IPP, the trader and the buyer on the same terms.</p>
+            <a class="text-link" href="#never-title">What it will never do</a>
+          </li>
+          <li>
+            <h3 class="h-sub">Built for rules still being written.</h3>
+            <p>Tariffs, loss factors, network charges and draft trading rules live as effective-dated data, not code. When NERSA finalises a rule, a row changes, and every past period still settles on the rules of its own dates.</p>
+            <a class="text-link" href="market.html#coming">The changes coming</a>
+          </li>
+          <li>
+            <h3 class="h-sub">Human sign-off and proof, built in.</h3>
+            <p>NERSA's draft framework keeps automated trading off SAWEM for its first five years. Webill Green already works that way: engines compute, people approve with four eyes on every limit, and every pack rebuilds byte for byte from its evidence.</p>
+            <a class="text-link" href="how-it-works.html#evidence">Evidence and controls</a>
+          </li>
+        </ul>
+        <div class="ahead__foot">
+          <p class="ahead__scale">Behind it: 24 domains, more than 8,000 automated tests, and a simulated market that runs a month in seconds. Next: <a class="text-link" href="edge.html#rollout">Great Britain, Texas, Spain, Australia and New Zealand</a>.</p>
+          <a class="btn btn--ink" href="edge.html">See the Webill edge in full</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- The market is being rewired -->
+    <section class="section section--paper" aria-labelledby="rewire-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h-section" id="rewire-title">One counterparty is becoming hundreds.</h2>
+        </div>
+        <div class="rewire">
+          <div class="rewire__copy prose">
+            <p>For most of its history, South African electricity had one seller. Since the licensing cap on private generation was removed at the turn of 2023, private generators, licensed traders and large buyers have been contracting with one another directly, and every one of those deals has to be metered, settled, invoiced and proved.</p>
+            <p>Today that work lives in spreadsheets, hand-built back offices and a separate vendor portal for each counterparty. <strong>Webill Green replaces them with one engine for the whole book:</strong> bilateral PPAs, Eskom Virtual Wheeling, wholesale trading and carbon, on one ledger.</p>
+          </div>
+
+          <figure class="rewire__chart" style="margin:0">
+            <div class="bars__caption">
+              <figcaption class="h-minor">Private generation registered with NERSA, MW per year</figcaption>
+              <div class="total"><span class="figure-xl">20.1&nbsp;GW</span><span class="label">registered by June 2026,<br>2,619 facilities</span></div>
+            </div>
+            <div class="bars">
+              <div class="bars__col" style="--i:0"><span class="bars__value">25</span><span class="bars__bar" style="height:0.4%"></span></div>
+              <div class="bars__col" style="--i:1"><span class="bars__value">23</span><span class="bars__bar" style="height:0.36%"></span></div>
+              <div class="bars__col" style="--i:2"><span class="bars__value">53</span><span class="bars__bar" style="height:0.8%"></span></div>
+              <div class="bars__col" style="--i:3"><span class="bars__value">135</span><span class="bars__bar" style="height:2%"></span></div>
+              <div class="bars__col" style="--i:4"><span class="bars__value">1,664</span><span class="bars__bar" style="height:20.4%"></span></div>
+              <div class="bars__col" style="--i:5"><span class="bars__value">4,490</span><span class="bars__bar" style="height:55.1%"></span></div>
+              <div class="bars__col" style="--i:6"><span class="bars__value">4,441</span><span class="bars__bar" style="height:54.5%"></span></div>
+              <div class="bars__col bars__col--lit" style="--i:7"><span class="bars__value">7,464</span><span class="bars__bar" style="height:91.6%"></span></div>
+            </div>
+            <div class="bars__axis" aria-hidden="true"><span>2018</span><span>2019</span><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span></div>
+          </figure>
+
+          <ol class="timeline" aria-label="Reforms opening the market">
+            <li><p class="timeline__date">2022 to 2023</p><p class="timeline__what">The licensing cap on private generation is removed.</p></li>
+            <li><p class="timeline__date">1 Jan 2025</p><p class="timeline__what">The Electricity Regulation Amendment Act comes into force.</p></li>
+            <li><p class="timeline__date">3 Mar 2025</p><p class="timeline__what">NERSA approves the wheeling rules.</p></li>
+            <li><p class="timeline__date">Jan 2026</p><p class="timeline__what">Phase two of the carbon tax begins.</p></li>
+            <li><p class="timeline__date">Feb 2026</p><p class="timeline__what">Market Code revision 2.3 is published.</p></li>
+            <li class="is-ahead"><p class="timeline__date">Apr 2027</p><p class="timeline__what">SAWEM, the wholesale market, is scheduled to open.</p></li>
+          </ol>
+          <p class="rewire__more"><a class="text-link" href="market.html">Read the century behind these dates, and the changes still coming</a></p>
+
+          <table class="contrast">
+            <caption class="h-sub">What changes on one engine</caption>
+            <thead><tr><th scope="col">Where the work lives today</th><th scope="col">On Webill Green</th></tr></thead>
+            <tbody>
+              <tr><td>A spreadsheet for every bilateral contract.</td><td><strong>One engine for the whole book.</strong> PPAs, Virtual Wheeling, market trades and carbon settle on one ledger.</td></tr>
+              <tr><td>A vendor portal for each network and counterparty.</td><td><strong>Routes across both networks,</strong> Eskom's and the municipalities', with each network charging once.</td></tr>
+              <tr><td>Month-end reconciliations that never quite agree.</td><td><strong>One deterministic period close</strong> and one invoice per counterparty.</td></tr>
+              <tr><td>Refunds checked by hand, meter by meter.</td><td><strong>Virtual Wheeling refunds matched every 15 minutes</strong> and reconciled against Eskom's credit note.</td></tr>
+              <tr><td>A carbon-tax return assembled from inboxes each July.</td><td><strong>A return pack that rebuilds identically</strong> from its evidence, ready for the company to review and file.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lifecycle spine -->
+    <section class="section" id="lifecycle" aria-labelledby="spine-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="spine-title">Follow one kilowatt-hour.</h2>
+          <p class="lede">Every screen in Webill Green is a stop on the same road. A reading enters at the meter and leaves as a line on a statement that both parties can sign.</p>
+        </div>
+
+        <div class="spine" data-spine>
+          <aside class="spine__rail" aria-label="Lifecycle stops">
+            <div class="spine__rail-inner">
+              <ol class="spine__stops">
+                <li class="spine__progress" data-spine-progress aria-hidden="true"></li>
+                <li class="spine__stop" data-stop="setup"><a href="#stage-setup"><span class="spine__num">1</span><span class="spine__name">Setup</span></a></li>
+                <li class="spine__stop" data-stop="deal"><a href="#stage-deal"><span class="spine__num">2</span><span class="spine__name">Deal</span></a></li>
+                <li class="spine__stop" data-stop="strategy"><a href="#stage-strategy"><span class="spine__num">3</span><span class="spine__name">Strategy</span></a></li>
+                <li class="spine__stop" data-stop="nominate"><a href="#stage-nominate"><span class="spine__num">4</span><span class="spine__name">Nominate</span></a></li>
+                <li class="spine__stop" data-stop="market"><a href="#stage-market"><span class="spine__num">5</span><span class="spine__name">Market day</span></a></li>
+                <li class="spine__stop" data-stop="settle"><a href="#stage-settle"><span class="spine__num">6</span><span class="spine__name">Settle</span></a></li>
+                <li class="spine__stop" data-stop="statement"><a href="#stage-statement"><span class="spine__num">7</span><span class="spine__name">Statement</span></a></li>
+              </ol>
+              <p class="spine__after">Then billing turns statements into invoices, and FINAL energy accrues certificates and carbon evidence.</p>
+            </div>
+          </aside>
+
+          <div class="spine__panels">
+            <article class="stage" id="stage-setup" data-stage="setup">
+              <p class="stage__num">1 of 7</p>
+              <h3 class="h-sub stage__title">Setup: stand up the facts.</h3>
+              <p class="stage__copy">Your organisation, its sites and meters, the tariffs in reach and the feeds that bring readings in. From the moment a meter is assigned, its readings become 20-minute intervals that everything downstream uses.</p>
+              <p class="stage__where">Where you work: <strong>Organization</strong>, <strong>Off-taker Sites</strong>, <strong>IPP Sites</strong></p>
+              <div class="artifact">
+                <dl class="meterplate">
+                  <div><dt>Interval</dt><dd>20 minutes</dd></div>
+                  <div><dt>Intervals today</dt><dd data-meter-count>72</dd></div>
+                  <div><dt>Read so far</dt><dd data-meter-read>--</dd></div>
+                </dl>
+                <div class="meterstrip" data-meterstrip aria-hidden="true"></div>
+                <div class="meterstrip__axis" aria-hidden="true"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span></div>
+              </div>
+            </article>
+
+            <article class="stage" id="stage-deal" data-stage="deal">
+              <p class="stage__num">2 of 7</p>
+              <h3 class="h-sub stage__title">Deal: agree the terms once.</h3>
+              <p class="stage__copy">Find a counterparty, send a proposal, negotiate the terms and sign. On its start date the contract goes active and becomes a standing instruction to the settlement engine.</p>
+              <p class="stage__where">Where you work: <strong>Deals</strong>, with its Proposals, Negotiations, Contracts and Disputes</p>
+              <div class="artifact">
+                <p class="artifact__cap">A physical PPA on its way to active</p>
+                <ol class="rail">
+                  <li><span class="rail__pill rail__pill--done">Draft</span></li>
+                  <li><span class="rail__pill rail__pill--done">Pending</span></li>
+                  <li><span class="rail__pill rail__pill--done">Accepted</span></li>
+                  <li><span class="rail__pill rail__pill--done">Negotiating</span></li>
+                  <li><span class="rail__pill rail__pill--done">Agreed</span></li>
+                  <li><span class="rail__pill rail__pill--done">Signed</span></li>
+                  <li><span class="rail__pill rail__pill--now">Active</span></li>
+                </ol>
+                <p class="ref">PPPA-202607-138209764</p>
+                <p class="ref-note">Physical and virtual PPAs between IPPs, traders and off-takers: eight deal types, one engine. An agreed deal left unsigned for 10 days is suspended.</p>
+              </div>
+            </article>
+
+            <article class="stage" id="stage-strategy" data-stage="strategy">
+              <p class="stage__num">3 of 7</p>
+              <h3 class="h-sub stage__title">Strategy: know where the energy will go.</h3>
+              <p class="stage__copy">Each book forecasts and allocates its portfolio every night: where energy will flow, what margin it earns and what is at risk. Simulate a deal before you sign it. A simulation is a rehearsal; it does not sign a contract.</p>
+              <p class="stage__where">Where you work: <strong>IPP Sites</strong>, <strong>Trader Pools</strong>, the <strong>Sales</strong> and <strong>Procurement</strong> Desks</p>
+              <div class="artifact">
+                <p class="artifact__cap">Allocation runs in a published order</p>
+                <div class="tiers" aria-hidden="true">
+                  <span class="tier--priority" style="flex:38">Priority</span>
+                  <span class="tier--prorata" style="flex:27">Pro rata</span>
+                  <span class="tier--fixed" style="flex:17">Fixed</span>
+                  <span class="tier--surplus" style="flex:18">Surplus</span>
+                </div>
+                <div class="tiers-key">
+                  <p><strong>Priority</strong> buyers are served first, in full.</p>
+                  <p><strong>Pro rata</strong> buyers share what is left in proportion.</p>
+                  <p><strong>Fixed</strong> is a cap, not a delivery guarantee.</p>
+                  <p><strong>Surplus</strong> is energy still to sell.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="stage" id="stage-nominate" data-stage="nominate">
+              <p class="stage__num">4 of 7</p>
+              <h3 class="h-sub stage__title">Nominate: commit next month, hour by hour.</h3>
+              <p class="stage__copy">Flexible members declare next month's volumes. A submitted nomination is binding: settlement reads it where no meter can speak, such as a trader's book, and imbalance is judged against it.</p>
+              <p class="stage__where">Where you work: <strong>Trader Pools</strong> and the nominations desk. Proposals for next month arrive on the 20th.</p>
+              <div class="artifact">
+                <p class="artifact__cap">One day of a nomination, MWh per trading period</p>
+                <div class="nomrow" data-nomrow aria-hidden="true"></div>
+                <div class="meterstrip__axis" aria-hidden="true"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span></div>
+              </div>
+            </article>
+
+            <article class="stage" id="stage-market" data-stage="market">
+              <p class="stage__num">5 of 7</p>
+              <h3 class="h-sub stage__title">Market day: bid before the gate, answer for it after.</h3>
+              <p class="stage__copy">Your BRP seat bids the book's net position into the day-ahead auction before 10:00 SAST the day before, corrects undelivered hours in five intraday auctions, follows the System Operator's instructions and accrues imbalance where actuals drift from schedule.</p>
+              <p class="stage__where">Where you work: <strong>Market</strong>, <strong>Bid Desk</strong>, <strong>Month</strong> <span class="chip chip--simulated" style="margin-left:8px">Simulated until SAWEM opens</span></p>
+              <div class="artifact">
+                <p class="artifact__cap">The SAWEM clock, in SAST</p>
+                <ol class="mclock">
+                  <li class="is-gate"><time>10:00 D−1</time><span>Day-ahead gate closes for seven days ahead</span></li>
+                  <li><time>14:00 D−1</time><span>Prices and schedules published</span></li>
+                  <li><time>18:00 D−1 to 18:00 D</time><span>Five intraday auctions for undelivered hours</span></li>
+                  <li><time>17:00 D+1</time><span>Indicative settlement statement</span></li>
+                </ol>
+              </div>
+            </article>
+
+            <article class="stage" id="stage-settle" data-stage="settle">
+              <p class="stage__num">6 of 7</p>
+              <h3 class="h-sub stage__title">Settle: match, price, adjust, balance.</h3>
+              <p class="stage__copy">When a period closes, the engine resolves what each meter or nomination says, matches supply to demand, applies losses and network charges and prices the contract's terms. It adjusts for spill, shortfall, curtailment and banking, then writes a ledger whose lines sum to zero.</p>
+              <p class="stage__where">Where you work: <strong>Deals</strong>, Contracts, and each site's Commercial tab</p>
+              <div class="artifact">
+                <ol class="pipeline">
+                  <li><b>1</b><strong>Resolve</strong><small>What each meter or nomination says</small></li>
+                  <li><b>2</b><strong>Match</strong><small>The lesser of supply and demand, less losses</small></li>
+                  <li><b>3</b><strong>Price</strong><small>The contract's terms, split by TOU</small></li>
+                  <li><b>4</b><strong>Adjust</strong><small>Spill, shortfall, curtailment, banking</small></li>
+                  <li><b>5</b><strong>Ledger</strong><small>Every line has a partner. Σ&nbsp;=&nbsp;0</small></li>
+                </ol>
+              </div>
+            </article>
+
+            <article class="stage" id="stage-statement" data-stage="statement">
+              <p class="stage__num">7 of 7</p>
+              <h3 class="h-sub stage__title">Statement: who owes whom, provably.</h3>
+              <p class="stage__copy">Each party receives an immutable, versioned statement: the same ledger, filtered to what it owes and is owed. A FINAL statement is never edited. A correction is a new version, and a dispute reopens a period deliberately, never silently.</p>
+              <p class="stage__where">Where you work: <strong>Billing</strong> and the <strong>Money Room</strong></p>
+              <div class="artifact">
+                <div class="stmt-mini">
+                  <div class="stmt-mini__row"><span>Energy, peak</span><span>R 7,457.33</span></div>
+                  <div class="stmt-mini__row"><span>Energy, standard</span><span>R 16,406.13</span></div>
+                  <div class="stmt-mini__row"><span>Energy, off-peak</span><span>R 7,244.27</span></div>
+                  <div class="stmt-mini__row"><span><strong>Owed to the seller</strong></span><span>R 31,107.73</span></div>
+                  <div class="stmt-mini__foot">
+                    <span class="stamp">FINAL</span>
+                    <span class="hash">Version 1, content-hashed</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Route + statement: each network charges once, ledger sums to zero -->
+    <section class="section section--paper" id="ledger" aria-labelledby="ledger-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="ledger-title">Two networks. Each charges once.</h2>
+          <p class="lede">Wheeled power crosses Eskom's network and often a municipality's. Webill Green applies each network's losses and charges exactly once, and proves the day with a ledger that sums to zero.</p>
+        </div>
+
+        <div class="route" data-route>
+          <div class="route__line">
+            <div class="node">
+              <span class="node__symbol" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 14v16M13 30h6"/><circle cx="16" cy="12" r="1.6"/><path d="M16 10.4V3M17.4 12.8l6.4 3.7M14.6 12.8l-6.4 3.7"/></svg>
+              </span>
+              <p class="node__name">Wind farm, Atlantis</p>
+              <p class="node__sub">Sells at 85.0 c/kWh<br>554,104 kWh generated</p>
+            </div>
+            <button class="node node--network" type="button" aria-pressed="false" data-network="eskom">
+              <span class="node__symbol" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3l-6 27M16 3l6 27M8 10h16M6 16h20M11.5 23h9M10 10l12 6M22 10l-12 6"/></svg>
+              </span>
+              <span class="node__name">Eskom Transmission</span>
+              <span class="node__sub">The national network</span>
+              <span class="node__charges"><span>Transmission 18 c</span><span>Ancillary 2 c</span></span>
+            </button>
+            <button class="node node--network" type="button" aria-pressed="false" data-network="muni">
+              <span class="node__symbol" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12.5" cy="16" r="6.5"/><circle cx="19.5" cy="16" r="6.5"/><path d="M2 16h4M26 16h4"/></svg>
+              </span>
+              <span class="node__name">Municipal network</span>
+              <span class="node__sub">The buyer's local distributor</span>
+              <span class="node__charges"><span>Wheeling 11 c</span><span>Distribution 13 c</span></span>
+            </button>
+            <div class="node">
+              <span class="node__symbol" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="5" width="18" height="24" rx="1.5"/><path d="M11 10h10M11 15h10M11 20h10M14 29v-4h4v4"/></svg>
+              </span>
+              <p class="node__name">Data centre, Midrand</p>
+              <p class="node__sub">Buys on delivered energy<br>38,933 kWh used</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="statement">
+          <article class="doc statement__doc" data-statement>
+            <header class="doc__head">
+              <div>
+                <h3 class="doc__title">Settlement statement</h3>
+                <p class="doc__meta">Thursday 9 July 2026, settled daily. Contract PPPA-202607-138209764</p>
+              </div>
+              <span class="stamp">FINAL</span>
+            </header>
+            <dl class="doc__terms">
+              <div><dt>Price</dt><dd>85.0 c/kWh fixed</dd></div>
+              <div><dt>Losses</dt><dd>6%</dd></div>
+              <div><dt>Shape</dt><dd>As generated</dd></div>
+              <div><dt>Spill, not billed here</dt><dd>515,170.901 kWh</dd></div>
+            </dl>
+
+            <h3>Energy, split by TOU</h3>
+            <table class="ledger" data-stmt-energy>
+              <thead><tr><th scope="col">Period</th><th scope="col" class="amt">Matched kWh</th><th scope="col" class="amt">Delivered kWh</th><th scope="col" class="amt">At 85.0 c</th></tr></thead>
+              <tbody>
+                <tr><td>Peak</td><td class="amt">9,333.333</td><td class="amt">8,773.333</td><td class="amt">R 7,457.33</td></tr>
+                <tr><td>Standard</td><td class="amt">20,533.333</td><td class="amt">19,301.333</td><td class="amt">R 16,406.13</td></tr>
+                <tr><td>Off-peak</td><td class="amt">9,066.667</td><td class="amt">8,522.667</td><td class="amt">R 7,244.27</td></tr>
+              </tbody>
+              <tfoot><tr><td>Total</td><td class="amt">38,933.333</td><td class="amt">36,597.333</td><td class="amt">R 31,107.73</td></tr></tfoot>
+            </table>
+
+            <h3>Ledger: every rand has a partner</h3>
+            <table class="ledger" data-stmt-ledger>
+              <thead><tr><th scope="col">Party</th><th scope="col">Line</th><th scope="col" class="amt">Amount</th></tr></thead>
+              <tbody>
+                <tr data-pair="energy" data-net="seller" data-formula="36,597.333 kWh delivered × 85.0 c = R 31,107.73" data-says="The seller is owed for delivered energy."><td>Wind farm</td><td>Energy, three TOU lines</td><td class="amt amt--pos">+R 31,107.73</td></tr>
+                <tr data-pair="energy" data-net="seller" data-formula="The same R 31,107.73, from the other side" data-says="The buyer pays exactly what the seller is owed."><td>Data centre</td><td>Energy</td><td class="amt">−R 31,107.73</td></tr>
+                <tr data-pair="wheel" data-net="muni" data-formula="36,597.333 kWh × 11 c = R 4,025.71" data-says="The municipal network earns its wheeling charge, once."><td>Municipal network</td><td>Wheeling at 11 c</td><td class="amt amt--pos">+R 4,025.71</td></tr>
+                <tr data-pair="wheel" data-net="muni" data-formula="The same R 4,025.71, paid by the buyer" data-says="The buyer pays the wheeling charge."><td>Data centre</td><td>Wheeling</td><td class="amt">−R 4,025.71</td></tr>
+                <tr data-pair="tx" data-net="eskom" data-formula="36,597.333 kWh × 18 c = R 6,587.52" data-says="Eskom Transmission earns its network charge, once."><td>Eskom Transmission</td><td>Transmission at 18 c</td><td class="amt amt--pos">+R 6,587.52</td></tr>
+                <tr data-pair="tx" data-net="eskom" data-formula="The same R 6,587.52, paid by the buyer" data-says="The buyer pays transmission."><td>Data centre</td><td>Transmission</td><td class="amt">−R 6,587.52</td></tr>
+                <tr data-pair="anc" data-net="eskom" data-formula="36,597.333 kWh × 2 c = R 731.95" data-says="The ancillary service charge, once."><td>Eskom Transmission</td><td>Ancillary at 2 c</td><td class="amt amt--pos">+R 731.95</td></tr>
+                <tr data-pair="anc" data-net="eskom" data-formula="The same R 731.95, paid by the buyer" data-says="The buyer pays the ancillary charge."><td>Data centre</td><td>Ancillary</td><td class="amt">−R 731.95</td></tr>
+                <tr data-pair="dx" data-net="muni" data-formula="36,597.333 kWh × 13 c = R 4,757.65" data-says="The municipal network earns its distribution charge, once."><td>Municipal network</td><td>Distribution at 13 c</td><td class="amt amt--pos">+R 4,757.65</td></tr>
+                <tr data-pair="dx" data-net="muni" data-formula="The same R 4,757.65, paid by the buyer" data-says="The buyer pays distribution."><td>Data centre</td><td>Distribution</td><td class="amt">−R 4,757.65</td></tr>
+              </tbody>
+              <tfoot><tr><td>Σ</td><td>Ten lines, five pairs</td><td class="amt"><span class="sigma">R 0.00 <span class="sigma__tick" aria-label="balanced">✓</span></span></td></tr></tfoot>
+            </table>
+
+            <footer class="doc__foot">
+              <p class="hash" data-stmt-hash>Fingerprint: computing in your browser…</p>
+            </footer>
+          </article>
+
+          <aside class="statement__side">
+            <div class="explain">
+              <div class="explain__box" data-explain>
+                <h3 data-explain-title>Select a line</h3>
+                <p class="explain__text" data-explain-text>Pick any ledger line, or a network on the route above. Its partner lights up and the arithmetic appears here.</p>
+                <p class="explain__formula" data-explain-formula>Seller +R 31,107.73. Buyer −R 47,210.56. Networks +R 16,102.83. Σ = R 0.00</p>
+              </div>
+              <div class="statuses">
+                <h3 class="h-minor">Three statuses, one direction</h3>
+                <ol class="rail">
+                  <li><span class="rail__pill rail__pill--done">Draft</span></li>
+                  <li><span class="rail__pill rail__pill--done">Preliminary</span></li>
+                  <li><span class="rail__pill rail__pill--now">Final</span></li>
+                </ol>
+                <p>Every run starts as DRAFT. The monthly run moves it to PRELIMINARY. Only a person moves it to FINAL, and nothing finalises on a timer. A FINAL calculation is superseded by a new version, never edited.</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rooms -->
+    <section class="section" aria-labelledby="rooms-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="rooms-title">A room for every desk.</h2>
+          <p class="lede">The Organization app groups its rooms by the work. One organisation can be an IPP, a trader and an off-taker at once, and sees only the rooms its roles need.</p>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Room groups" data-tabs="rooms">
+          <button class="tab" role="tab" id="tab-money" aria-controls="panel-money" aria-selected="true">Money</button>
+          <button class="tab" role="tab" id="tab-wheeling" aria-controls="panel-wheeling" aria-selected="false" tabindex="-1">Wheeling</button>
+          <button class="tab" role="tab" id="tab-trading" aria-controls="panel-trading" aria-selected="false" tabindex="-1">Trading</button>
+          <button class="tab" role="tab" id="tab-carbon" aria-controls="panel-carbon" aria-selected="false" tabindex="-1">Carbon</button>
+        </div>
+
+        <div class="rooms">
+          <div class="room-panel" role="tabpanel" id="panel-money" aria-labelledby="tab-money">
+            <ul class="room-panel__list">
+              <li><strong>Money Room</strong><span>Profit and loss across fourteen value streams. Every figure is graded settled, invoiced or estimated, and traces back to its documents.</span></li>
+              <li><strong>Billing</strong><span>Invoices, credit notes, statements, payments and aging. VAT at 15% is rounded once, and a correction is always a note, never an edit.</span></li>
+            </ul>
+            <figure class="plate room-panel__shot">
+              <div class="plate__frame"><img src="assets/shots/money-room.webp" alt="The Money Room screen showing a month's cash result, savings against grid-only, amounts owed and a monthly money chart." width="1600" height="1000" loading="lazy"></div>
+              <figcaption><strong>Money Room.</strong></figcaption>
+            </figure>
+          </div>
+
+          <div class="room-panel" role="tabpanel" id="panel-wheeling" aria-labelledby="tab-wheeling" hidden>
+            <ul class="room-panel__list">
+              <li><strong>Off-taker Sites</strong><span>Sites, meters, readings and what each site's electricity really costs.</span></li>
+              <li><strong>IPP Sites</strong><span>The fleet story: energy still to sell, buyer exposure and risk.</span></li>
+              <li><strong>Trader Pools</strong><span>A licensed trader's books, which own no meter.</span></li>
+              <li><strong>Deals</strong><span>Proposals, negotiations, contracts and disputes.</span></li>
+              <li><strong>Virtual Wheeling</strong><span>Eskom's monthly refund, matched every 15 minutes across your meters.</span></li>
+            </ul>
+            <figure class="plate room-panel__shot">
+              <div class="plate__frame"><img src="assets/shots/ipp-fleet.webp" alt="The IPP Sites fleet screen showing installed capacity, sold share, realised price and the share of energy that still needs a buyer." width="1600" height="1000" loading="lazy"></div>
+              <figcaption><strong>IPP Sites, Fleet.</strong></figcaption>
+            </figure>
+          </div>
+
+          <div class="room-panel" role="tabpanel" id="panel-trading" aria-labelledby="tab-trading" hidden>
+            <ul class="room-panel__list">
+              <li><strong>Market</strong><span>Your membership desk: account, credit cover, notices, registry, standing data and API access.</span></li>
+              <li><strong>Bid Desk</strong><span>Day-ahead and intraday bids for the books your BRP balances, on a live market clock.</span></li>
+              <li><strong>Month</strong><span>After delivery: metering, imbalance and the settlement month.</span></li>
+              <li><strong>Accounts</strong><span>Market accounts, statements and invoices from the Market Operator.</span></li>
+            </ul>
+            <figure class="plate room-panel__shot">
+              <div class="plate__frame"><img src="assets/shots/bid-desk.webp" alt="The Bid Desk screen showing the trading day's stages, submissions, items needing attention and the portfolio position by hour." width="1600" height="1000" loading="lazy"></div>
+              <figcaption><strong>Bid Desk.</strong></figcaption>
+            </figure>
+          </div>
+
+          <div class="room-panel" role="tabpanel" id="panel-carbon" aria-labelledby="tab-carbon" hidden>
+            <ul class="room-panel__list">
+              <li><strong>Tax</strong><span>An evidenced carbon-tax year, from facility activity to the July return pack.</span></li>
+              <li><strong>Market</strong><span>Bilateral trades and a venue for certificates and carbon credits.</span></li>
+              <li><strong>Certificates</strong><span>Renewable certificates accrued from FINAL settlement and mirrored from the registry.</span></li>
+            </ul>
+            <figure class="plate room-panel__shot">
+              <div class="plate__frame"><img src="assets/shots/carbon-tax.webp" alt="The carbon-tax year screen showing estimated liability, confirmed emissions, evidence gaps and the path from emissions to liability." width="1600" height="1000" loading="lazy"></div>
+              <figcaption><strong>Carbon Tax.</strong> The tax pack is not yet commercially released.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roles -->
+    <section class="section section--paper" id="seats" aria-labelledby="roles-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="roles-title">Built for the people who close the month.</h2>
+          <p class="lede">Finance, trading and settlement teams at IPPs, traders and large off-takers set the bar. Pick your seat.</p>
+        </div>
+
+        <div class="roles">
+          <div class="roles__list" role="tablist" aria-label="Seats" aria-orientation="vertical" data-tabs="roles">
+            <button class="role-btn" role="tab" id="role-ipp" aria-controls="rp-ipp" aria-selected="true"><span class="role-btn__name">IPP operator</span><span class="role-btn__job">Sell the gap</span></button>
+            <button class="role-btn" role="tab" id="role-off" aria-controls="rp-off" aria-selected="false" tabindex="-1"><span class="role-btn__name">Off-taker energy manager</span><span class="role-btn__job">Pay less, and greener</span></button>
+            <button class="role-btn" role="tab" id="role-trader" aria-controls="rp-trader" aria-selected="false" tabindex="-1"><span class="role-btn__name">Trader</span><span class="role-btn__job">Buy from many, sell to many</span></button>
+            <button class="role-btn" role="tab" id="role-brp" aria-controls="rp-brp" aria-selected="false" tabindex="-1"><span class="role-btn__name">Organisation bidder</span><span class="role-btn__job">Bid the day</span></button>
+            <button class="role-btn" role="tab" id="role-fin" aria-controls="rp-fin" aria-selected="false" tabindex="-1"><span class="role-btn__name">Finance lead</span><span class="role-btn__job">Are we ahead, and why?</span></button>
+            <button class="role-btn" role="tab" id="role-carbon" aria-controls="rp-carbon" aria-selected="false" tabindex="-1"><span class="role-btn__name">Carbon lead</span><span class="role-btn__job">A printout, not a project</span></button>
+          </div>
+
+          <div class="roles__detail">
+            <div class="role-panel" role="tabpanel" id="rp-ipp" aria-labelledby="role-ipp">
+              <p class="role-panel__job">Sell the gap.</p>
+              <p class="role-panel__problem">Your output never matches your contracts. Each interval has to be allocated to the right PPA, curtailment claimed, surplus sold and shortfall covered, and the month closed once, with one invoice per counterparty.</p>
+              <ul class="role-panel__gets">
+                <li>A fleet view of the energy still to sell, and what it is worth</li>
+                <li>Allocation rules that run in a published order: priority, pro rata, fixed, surplus</li>
+                <li>Curtailment claims backed by plant evidence</li>
+                <li>One deterministic close and one invoice per counterparty</li>
+              </ul>
+              <p class="role-panel__where">Where you work: <strong>IPP Sites</strong>, <strong>Deals</strong>, <strong>Bid Desk</strong>, <strong>Billing</strong></p>
+              <p class="role-panel__go"><a class="btn btn--ghost" href="ipps.html">See the IPP desk</a></p>
+            </div>
+
+            <div class="role-panel" role="tabpanel" id="rp-off" aria-labelledby="role-off" hidden>
+              <p class="role-panel__job">Pay less, and greener.</p>
+              <p class="role-panel__problem">You need to know whether you are paying less, and greener, than buying everything from the grid, and what to do next. Wheeled credits arrive per TOU period, Virtual Wheeling refunds 45 days after the month, and the municipal bill still has to be checked against interval data.</p>
+              <ul class="role-panel__gets">
+                <li>Landed cost per kWh, with the arithmetic shown</li>
+                <li>A Procurement Desk that compares every option with staying on the grid</li>
+                <li>Virtual Wheeling refunds reconciled meter by meter, every 15 minutes</li>
+                <li>A dual-method Scope 2 emissions statement</li>
+              </ul>
+              <p class="role-panel__where">Where you work: <strong>Off-taker Sites</strong>, <strong>Virtual Wheeling</strong>, <strong>Money Room</strong></p>
+              <p class="role-panel__go"><a class="btn btn--ghost" href="off-takers.html">See the off-taker desk</a></p>
+            </div>
+
+            <div class="role-panel" role="tabpanel" id="rp-trader" aria-labelledby="role-trader" hidden>
+              <p class="role-panel__job">Buy from many, sell to many.</p>
+              <p class="role-panel__problem">You own no meter and carry both sides of a book. A trade's price matters, but so do its hours: cheap midday solar is a poor answer to an evening shortage.</p>
+              <ul class="role-panel__gets">
+                <li>Trader pools that buy from generators and sell to consumers</li>
+                <li>The Desk: sell the long, buy the short, hour by hour</li>
+                <li>Chain reconciliation from IPP, through the trader, to the off-taker</li>
+                <li>Risk limits, the kill switch and the automation level behind four-eyes approval</li>
+              </ul>
+              <p class="role-panel__where">Where you work: <strong>Trader Pools</strong>, <strong>Bid Desk</strong>, <strong>Accounts</strong></p>
+              <p class="role-panel__go"><a class="btn btn--ghost" href="traders.html">See the trader desk</a></p>
+            </div>
+
+            <div class="role-panel" role="tabpanel" id="rp-brp" aria-labelledby="role-brp" hidden>
+              <p class="role-panel__job">Bid the day, then answer for it.</p>
+              <p class="role-panel__problem">As the Balance Responsible Party you balance the books against the market. Bids go in before the 10:00 gate, intraday corrections follow, and every hour's deviation becomes imbalance you must explain.</p>
+              <ul class="role-panel__gets">
+                <li>Day-ahead and intraday bids built from the book's net position</li>
+                <li>Credit cover checked before a submission leaves</li>
+                <li>The after-delivery month: metering, imbalance and settlement</li>
+                <li>A market clock that shows every gate in SAST</li>
+              </ul>
+              <p class="role-panel__where">Where you work: <strong>Market</strong>, <strong>Bid Desk</strong>, <strong>Month</strong> <span class="chip chip--simulated" style="margin-left:6px">Simulated until SAWEM opens</span></p>
+              <p class="role-panel__go"><a class="btn btn--ghost" href="how-it-works.html#market-day">See the market day</a></p>
+            </div>
+
+            <div class="role-panel" role="tabpanel" id="rp-fin" aria-labelledby="role-fin" hidden>
+              <p class="role-panel__job">Are we ahead, and why?</p>
+              <p class="role-panel__problem">You need one period close you can defend, documents that match the settlement, and a trail an auditor can read without a guide.</p>
+              <ul class="role-panel__gets">
+                <li>The Money Room: profit and loss by value stream, each figure graded</li>
+                <li>Invoices, credit notes and statements from the same ledger</li>
+                <li>Month packs as one ZIP, with every source document</li>
+                <li>FINAL figures that never change; corrections arrive as new versions</li>
+              </ul>
+              <p class="role-panel__where">Where you work: <strong>Money Room</strong>, <strong>Billing</strong></p>
+              <p class="role-panel__go"><a class="btn btn--ghost" href="how-it-works.html#evidence">See the evidence chain</a></p>
+            </div>
+
+            <div class="role-panel" role="tabpanel" id="rp-carbon" aria-labelledby="role-carbon" hidden>
+              <p class="role-panel__job">The July return becomes a printout.</p>
+              <p class="role-panel__problem">Carbon-tax evidence sits in inboxes and spreadsheets, and the deadline arrives every July. Mistakes happen because the evidence was scattered, not because the arithmetic is hard.</p>
+              <ul class="role-panel__gets">
+                <li>Facility activity turned into an explained liability</li>
+                <li>Offsets checked against their caps before they count</li>
+                <li>A return pack with working papers, annexures and a hashed audit index</li>
+                <li>Certificates accrued from settled energy, mirrored from the registry</li>
+              </ul>
+              <p class="role-panel__where">Where you work: <strong>Tax</strong>, <strong>Certificates</strong>, <strong>Carbon Market</strong> <span class="chip chip--planned" style="margin-left:6px">Tax pack: planned</span></p>
+              <p class="role-panel__go"><a class="btn btn--ghost" href="carbon.html">See the carbon desk</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carbon teaser -->
+    <section class="section" aria-labelledby="carbon-title">
+      <div class="wrap carbon">
+        <div class="carbon__copy">
+          <h2 class="h-section" id="carbon-title">The July return becomes a printout.</h2>
+          <div class="prose" style="margin-top:24px">
+            <p>South Africa's carbon tax rises every year and is filed each July on SARS eFiling. Webill Green turns a year of facility activity into an explained liability, checks offsets against their caps and builds the return pack with its evidence.</p>
+            <p><strong>The company reviews, signs and files.</strong> Webill Green never holds SARS credentials and never gives tax advice.</p>
+          </div>
+          <p style="margin-top:22px"><span class="chip chip--planned">Planned: prototyped and tested, not yet commercially released</span></p>
+          <p style="margin-top:26px"><a class="text-link" href="carbon.html">How the carbon-tax pack works</a></p>
+        </div>
+        <figure class="carbon__chart" style="margin:0">
+          <p class="h-minor">Carbon tax rate, rand per tonne of CO₂e</p>
+          <svg class="rate-chart" viewBox="0 0 640 360" role="img" aria-label="Carbon tax rate per tonne: R120 in 2019, R190 in 2024, R236 in 2025, R308 in 2026, then legislated rises to R347 in 2027, R385 in 2028, R424 in 2029 and R462 in 2030." data-rate-chart></svg>
+          <p class="source" style="margin-top:8px">Rates are legislated to 2030; the years ahead are drawn dashed.</p>
+          <ul class="formula-strip" aria-label="How the liability is built">
+            <li><b>Emissions</b>tCO₂e by source</li>
+            <li class="op" aria-hidden="true">×</li>
+            <li><b>(1 − allowances)</b>basic, offsets, others</li>
+            <li class="op" aria-hidden="true">×</li>
+            <li><b>R 308</b>per tonne in 2026</li>
+          </ul>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Honest status -->
+    <section class="section section--paper" aria-labelledby="status-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="status-title">Honest about what is live.</h2>
+          <p class="lede">The wholesale market opens in phases, and much of the platform is shown on a simulated world today. Here is exactly what that means.</p>
+        </div>
+        <div class="status-board">
+          <div class="status-col">
+            <span class="chip chip--built">Built</span>
+            <h3>In the product today</h3>
+            <p>Shipped, tested and documented.</p>
+            <ul>
+              <li>Contracts from proposal to signature, physical and virtual</li>
+              <li>Settlement to a zero-sum ledger, DRAFT to FINAL</li>
+              <li>Invoices, credit notes, VAT and month packs</li>
+              <li>Virtual Wheeling allocation and refund reconciliation</li>
+              <li>The Money Room profit and loss</li>
+              <li>Day-ahead and intraday bidding from the BRP seat</li>
+              <li>Certificate custody and the carbon venue</li>
+            </ul>
+          </div>
+          <div class="status-col status-col--dashed">
+            <span class="chip chip--simulated">Simulated</span>
+            <h3>A rehearsal, clearly labelled</h3>
+            <p>Synthetic, and never shown as real traffic.</p>
+            <ul>
+              <li>The Market Operator and System Operator consoles</li>
+              <li>A market of 50 synthetic participants: 15 IPPs, 15 off-takers, 20 traders</li>
+              <li>Carbon registry connectors for Verra, Gold Standard and COAS</li>
+              <li>Weather inputs to the generation forecast</li>
+            </ul>
+          </div>
+          <div class="status-col status-col--dashed">
+            <span class="chip chip--waiting">Waiting</span>
+            <h3>On an outside trigger</h3>
+            <p>Ready on our side; waiting on someone else's.</p>
+            <ul>
+              <li>Live SAWEM connection: waits on the Market Operator's interface, endpoint and security document</li>
+              <li>SAWEM's opening, scheduled for April 2027</li>
+              <li>Registry writes, until registries publish write APIs</li>
+              <li>Commercial release of the carbon-tax pack</li>
+            </ul>
+          </div>
+          <div class="status-col">
+            <span class="chip chip--person">A person confirms</span>
+            <h3>Done by a person, on purpose</h3>
+            <p>Engines compute; people confirm.</p>
+            <ul>
+              <li>Moving a statement from PRELIMINARY to FINAL</li>
+              <li>Changing risk limits, the kill switch or the automation level, with four eyes</li>
+              <li>Marking a carbon-tax return ready: a check, not a button</li>
+              <li>Filing the return on SARS eFiling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Neutrality -->
+    <section class="section" aria-labelledby="never-title">
+      <div class="wrap never">
+        <div class="never__copy">
+          <h2 class="h-section" id="never-title">Neutral, by construction.</h2>
+          <p class="lede" style="margin-top:24px">Webill Green takes no side in the trade. It routes, meters, settles and proves for every party, and no network is charged twice. Some things it will never do.</p>
+        </div>
+        <ul class="never__list">
+          <li>Generate power or own wires</li>
+          <li>Change how the wholesale market clears</li>
+          <li>Hold SARS credentials or file your return</li>
+          <li>Give tax advice</li>
+          <li>Hold client money in version&nbsp;1</li>
+          <li>Offer carbon derivatives</li>
+          <li>Score ESG</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Rating plate -->
+    <section class="section section--paper section--tight" aria-labelledby="plate-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h-section" id="plate-title">The engine, by its rating plate.</h2>
+          <p class="lede">The constants every screen respects.</p>
+        </div>
+        <div class="nameplate">
+          <span class="screw screw--tl" aria-hidden="true"></span><span class="screw screw--tr" aria-hidden="true"></span><span class="screw screw--bl" aria-hidden="true"></span><span class="screw screw--br" aria-hidden="true"></span>
+          <div class="nameplate__head">
+            <div class="nameplate__brand">
+              <img src="assets/webill-green-mark.png" alt="" width="44" height="44">
+              <div>
+                <p class="nameplate__title">Webill Green</p>
+                <p class="nameplate__type">The traded electricity platform. Locale: South Africa</p>
+              </div>
+            </div>
+            <span class="chip">Follows Market Code v2.3. Compliance is self-assessed</span>
+          </div>
+          <dl class="nameplate__grid">
+            <div><dt>Metering grain</dt><dd>20-minute intervals; 15 for Virtual Wheeling</dd></div>
+            <div><dt>Trading day</dt><dd>24 hourly periods, SAST, no daylight saving</dd></div>
+            <div><dt>Day-ahead gate</dt><dd>10:00 SAST, the day before delivery</dd></div>
+            <div><dt>Settlement</dt><dd>DRAFT, then PRELIMINARY, then FINAL</dd></div>
+            <div><dt>Ledger</dt><dd>Every period sums to R 0.00</dd></div>
+            <div><dt>Rates</dt><dd>Effective-dated; FINAL is superseded, never edited</dd></div>
+            <div><dt>Evidence</dt><dd>Hashed packs that rebuild identically</dd></div>
+            <div><dt>Controls</dt><dd>Four eyes on limits, kill switch and automation</dd></div>
+            <div><dt>Money</dt><dd>Rand, with VAT at 15% rounded once</dd></div>
+            <div><dt>Engine</dt><dd>24 domains, more than 8,000 automated tests</dd></div>
+            <div><dt>Deal types</dt><dd>Eight, physical and virtual, on one engine</dd></div>
+            <div><dt>Rehearsal market</dt><dd>50 synthetic participants</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- Walkthrough -->
+    <section class="section" id="walkthrough" aria-labelledby="walk-title">
+      <div class="wrap contact">
+        <div class="contact__copy">
+          <h2 class="h-section" id="walk-title">See it run on the demo world.</h2>
+          <p class="lede" style="margin-top:24px">A walkthrough runs on Webill Green's deterministic demo world: a simulated market of fifty participants, a live 20-minute meter simulator and the screens your team would use. Tell us your seat and we'll start there.</p>
+          <ul class="contact__links">
+            <li><a class="text-link" href="market.html">A century of South African electricity, and what comes next</a></li>
+            <li><a class="text-link" href="how-it-works.html">How the platform works, end to end</a></li>
+            <li><a class="text-link" href="how-it-works.html#glossary">The terms we use, in plain words</a></li>
+          </ul>
+        </div>
+        <div class="contact__form">
+          <form class="form" data-walkthrough novalidate>
+            <div class="field">
+              <label for="f-name">Your name</label>
+              <input id="f-name" name="name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="f-email">Work email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="f-org">Organisation</label>
+              <input id="f-org" name="organisation" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="f-seat">Your seat</label>
+              <select id="f-seat" name="seat">
+                <option>IPP operator</option>
+                <option>Off-taker energy manager</option>
+                <option>Trader</option>
+                <option>Organisation bidder (BRP)</option>
+                <option>Finance lead</option>
+                <option>Carbon lead</option>
+                <option>Network operator or municipality</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <div class="field field--wide">
+              <label for="f-what">What should we show you?</label>
+              <textarea id="f-what" name="message" placeholder="For example: how a Virtual Wheeling refund is reconciled across our meters"></textarea>
+            </div>
+            <div class="form__foot">
+              <p class="field__hint">The request is put together here for you to send. Nothing leaves this page on its own.</p>
+              <button class="btn btn--ink" type="submit">Prepare my request</button>
+            </div>
+            <div class="request field--wide" data-request hidden>
+              <p class="request__to">Send it to <span class="request__addr" data-request-addr></span></p>
+              <label class="visually-hidden" for="f-request">Your walkthrough request</label>
+              <textarea id="f-request" class="request__text" data-request-text readonly rows="7"></textarea>
+              <div class="btn-row">
+                <button class="btn btn--ink btn--small" type="button" data-request-copy>Copy request</button>
+                <a class="btn btn--ghost btn--small" data-request-mail href="#">Open in your email app</a>
+              </div>
+              <p class="form__status" data-form-status role="status"></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__top">
+        <div class="site-footer__brand">
+          <a class="site-footer__mark" href="index.html"><img src="assets/webill-green-mark.png" alt="" width="40" height="40"><span class="site-footer__name">Webill Green</span></a>
+          <p class="site-footer__tagline">The traded electricity platform. Meters, routes, settles, bills and proves, for every party, with each network charged once.</p>
+        </div>
+        <div class="site-footer__cols">
+          <div>
+            <h2>South Africa</h2>
+            <ul>
+              <li><a href="market.html#history">A century of electricity</a></li>
+              <li><a href="market.html#coming">The changes coming</a></li>
+              <li><a href="index.html#walkthrough">Book a walkthrough</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Platform</h2>
+            <ul>
+              <li><a href="edge.html">The Webill edge</a></li>
+              <li><a href="edge.html#rollout">The roll-out</a></li>
+              <li><a href="how-it-works.html">How it works</a></li>
+              <li><a href="how-it-works.html#evidence">Evidence and controls</a></li>
+              <li><a href="how-it-works.html#integrations">Integrations</a></li>
+              <li><a href="how-it-works.html#glossary">Glossary</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Seats</h2>
+            <ul>
+              <li><a href="ipps.html">IPPs</a></li>
+              <li><a href="off-takers.html">Off-takers</a></li>
+              <li><a href="traders.html">Traders</a></li>
+              <li><a href="carbon.html">Carbon</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer__base">
+        <p>© <span data-year>2026</span> Webill Green. South Africa. All times in SAST.</p>
+        <p>Nothing here is tax or investment advice.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>For off-takers · Webill Green</title>
+  <meta name="description" content="Webill Green for large off-takers: landed cost per kWh with the arithmetic shown, every option compared with the grid, and Virtual Wheeling refunds reconciled every 15 minutes.">
+  <meta name="theme-color" content="#059669">
+  <link rel="icon" href="assets/webill-green-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="wrap site-header__inner">
+      <a class="brand" href="index.html" aria-label="Webill Green home">
+        <img src="assets/webill-green-logo.png" alt="Webill Green" width="1100" height="162">
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <a href="market.html">The market</a>
+        <a href="how-it-works.html">How it works</a>
+        <a href="ipps.html">IPPs</a>
+        <a href="off-takers.html">Off-takers</a>
+        <a href="traders.html">Traders</a>
+        <a href="carbon.html">Carbon</a>
+        <a class="site-nav__edge" href="edge.html">The Webill edge</a>
+      </nav>
+      <div class="site-header__actions">
+        <a class="btn btn--ink btn--small" href="index.html#walkthrough">Book a walkthrough</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+          <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+          Menu
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="wrap page-hero__grid">
+        <p class="page-hero__who">For large off-takers on a TOU tariff</p>
+        <h1 class="h-display page-hero__title" id="page-title">Pay less, and greener.</h1>
+        <p class="lede page-hero__lede">Are you paying less, and greener, than buying everything from the grid, and what should you do next? Webill Green links your meter readings, contracts and costs, shows the landed cost of every kilowatt-hour with the arithmetic, reconciles Virtual Wheeling refunds meter by meter and compares every new option with staying on the grid.</p>
+        <div class="btn-row page-hero__aside">
+          <a class="btn btn--ink" href="index.html#walkthrough">Book a walkthrough</a>
+          <a class="btn btn--ghost" href="#landed">Work out a landed cost</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" id="landed" aria-labelledby="landed-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="landed-title">What a wheeled kilowatt-hour really costs.</h2>
+          <p class="lede">A contract price is a sticker. By the time a kilowatt-hour reaches your meter it has lost some of itself on the wires and picked up network charges. Landed cost is the honest number to hold against the grid.</p>
+        </div>
+
+        <div class="instrument" data-landed>
+          <div class="instrument__controls">
+            <div class="slider">
+              <div class="slider__top"><label for="l-price">Contract price per kWh</label><output class="slider__value" data-out="price" for="l-price">85.0 c</output></div>
+              <input id="l-price" name="price" type="range" min="40" max="140" step="0.5" value="85">
+            </div>
+            <div class="slider">
+              <div class="slider__top"><label for="l-dlf">Distribution loss factor</label><output class="slider__value" data-out="dlf" for="l-dlf">0.966</output></div>
+              <input id="l-dlf" name="dlf" type="range" min="900" max="1000" step="1" value="966">
+              <p class="slider__hint">The share of energy sent that arrives at your meter.</p>
+            </div>
+            <div class="slider">
+              <div class="slider__top"><label for="l-wheel">Network charges per kWh delivered</label><output class="slider__value" data-out="wheel" for="l-wheel">15.0 c</output></div>
+              <input id="l-wheel" name="wheel" type="range" min="0" max="45" step="0.5" value="15">
+            </div>
+            <div class="slider">
+              <div class="slider__top"><label for="l-spill">Spill credit on unused energy</label><output class="slider__value" data-out="spill" for="l-spill">40.0 c</output></div>
+              <input id="l-spill" name="spill" type="range" min="0" max="80" step="0.5" value="40">
+            </div>
+            <div>
+              <p class="label" id="tou-label">Compare with the grid in</p>
+              <div class="segmented" role="group" aria-labelledby="tou-label" style="margin-top:8px">
+                <button type="button" data-tou="peak" aria-pressed="false">Peak</button>
+                <button type="button" data-tou="standard" aria-pressed="true">Standard</button>
+                <button type="button" data-tou="offpeak" aria-pressed="false">Off-peak</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="instrument__result" aria-live="polite">
+            <p class="label">Landed cost at your meter</p>
+            <div class="result-big"><span class="figure-xl" data-landed-value>103.0</span><span class="result-big__unit">c/kWh</span></div>
+            <ul class="build-up">
+              <li><span>Contract price</span><span class="v" data-l-price>85.0 c</span></li>
+              <li><span>After network losses</span><span class="v" data-l-loss>88.0 c</span><span class="f" data-l-loss-f></span></li>
+              <li><span>Network charges</span><span class="v" data-l-wheel>+ 15.0 c</span></li>
+              <li class="is-total"><span>Landed cost</span><span class="v" data-l-total>103.0 c</span></li>
+              <li><span data-l-grid-name>Standard grid tariff</span><span class="v" data-l-grid>128.0 c</span></li>
+              <li class="is-total"><span>Against the grid</span><span class="v" data-l-saving>Saves 25.0 c</span><span class="f" data-l-saving-f></span></li>
+            </ul>
+            <div class="compare-bar" aria-hidden="true">
+              <div class="compare-bar__row"><span>Grid</span><span class="compare-bar__track"><span class="compare-bar__fill" data-bar-grid></span></span><span class="compare-bar__v" data-bar-grid-v></span></div>
+              <div class="compare-bar__row"><span>Landed</span><span class="compare-bar__track"><span class="compare-bar__fill compare-bar__fill--green" data-bar-landed></span></span><span class="compare-bar__v" data-bar-landed-v></span></div>
+            </div>
+            <p class="small" style="margin-top:18px;color:var(--ink-2)" data-l-sticker></p>
+            <ul class="build-up">
+              <li><span>Over-contracting: each unused kWh costs</span><span class="v" data-l-over>63.0 c</span><span class="f" data-l-over-f></span></li>
+            </ul>
+          </div>
+          <p class="instrument__note">Worked example: 85 ÷ 0.966 + 15 ≈ 103 c/kWh against a standard rate of 128 c, about a fifth off. Grid rates used here: peak 210, standard 128, off-peak 95 c/kWh; your own come from Eskom's effective-dated tariff and loss-factor tables.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="desk-title">
+      <div class="wrap feature-rows">
+        <div class="section-head section-head--split" style="margin-bottom:0">
+          <h2 class="h-section" id="desk-title">Every option, compared with staying on the grid.</h2>
+          <p class="lede">The Procurement Desk prices doing nothing first, on your own load and tariff. Every supplier, shape and contract is then held against that number, at a cautious P90 and in year five as well as today.</p>
+        </div>
+
+        <ol class="desk-steps" aria-label="The Procurement Desk">
+          <li><b>1</b><strong>The need, and today's cost</strong><span>Option 0: stay on the grid, priced on your own load</span></li>
+          <li><b>2</b><strong>Who could supply</strong><span>IPPs and traders whose hours fit yours</span></li>
+          <li><b>3</b><strong>Build the purchase</strong><span>Volume, shape, price and term, physical or virtual</span></li>
+          <li><b>4</b><strong>Saving and security</strong><span>Against the grid, at P90 and in year five</span></li>
+          <li><b>5</b><strong>Compare and decide</strong><span>Strategies side by side, then a proposal</span></li>
+        </ol>
+
+        <div class="split">
+          <div class="split__a">
+            <div class="doc-mini">
+              <p class="doc-mini__head">A year's procurement, counted once</p>
+              <table class="ledger" style="margin-top:8px">
+                <thead><tr><th scope="col">Line</th><th scope="col" class="amt">Amount</th></tr></thead>
+                <tbody>
+                  <tr><td>Contracts, including R 500,000 of spill</td><td class="amt">R 7,000,000</td></tr>
+                  <tr><td>Leftover grid supply</td><td class="amt">R 3,000,000</td></tr>
+                </tbody>
+                <tfoot>
+                  <tr><td>Total spend</td><td class="amt">R 10,000,000</td></tr>
+                  <tr><td>All-grid bill for the same load</td><td class="amt">R 12,000,000</td></tr>
+                  <tr><td>Net saving</td><td class="amt amt--pos">R 2,000,000</td></tr>
+                </tfoot>
+              </table>
+              <p class="source" style="margin-top:14px">The R 500,000 of spill is already inside the contract cost; it is not subtracted twice.</p>
+            </div>
+          </div>
+          <figure class="plate split__b">
+            <div class="plate__frame"><img src="assets/shots/offtaker-commercial.webp" alt="The off-taker commercial workspace where purchases are built and compared with the grid." width="1120" height="700" loading="lazy"></div>
+            <figcaption><strong>Site Commercial, the Procurement Desk.</strong> Possible savings are not money already saved.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" id="virtual-wheeling" aria-labelledby="vw-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="vw-title">Virtual Wheeling refunds, matched every 15 minutes.</h2>
+          <p class="lede">Eskom pays one consolidated Wheeled Energy Refund a month, within 45 days: fleet generation that an enrolled meter used in the same quarter-hour, at that meter's gen-wheeling rate. How the energy is spread across your meters decides how much of it earns a refund.</p>
+        </div>
+
+        <div class="instrument" data-tank>
+          <div class="instrument__controls">
+            <p class="small" style="color:var(--ink-2)">One standard quarter-hour. Your generators produced <strong>100 kWh</strong>; the refund rate is <strong>R 0.50</strong> a kWh.</p>
+            <div class="slider">
+              <div class="slider__top"><label for="t-a">Meter A used</label><output class="slider__value" data-out="meterA" for="t-a">80 kWh</output></div>
+              <input id="t-a" name="meterA" type="range" min="0" max="120" step="1" value="80">
+            </div>
+            <div class="slider">
+              <div class="slider__top"><label for="t-b">Meter B used</label><output class="slider__value" data-out="meterB" for="t-b">10 kWh</output></div>
+              <input id="t-b" name="meterB" type="range" min="0" max="120" step="1" value="10">
+            </div>
+            <div>
+              <p class="label" id="mode-label">Spread the generation by</p>
+              <div class="segmented" role="group" aria-labelledby="mode-label" style="margin-top:8px">
+                <button type="button" data-mode="greedy" aria-pressed="true">Most room first</button>
+                <button type="button" data-mode="equal" aria-pressed="false">An equal split</button>
+              </div>
+            </div>
+          </div>
+          <div class="instrument__result" aria-live="polite">
+            <div class="tank">
+              <div class="tank__meter">
+                <div class="tank__glass" data-glass="A"><span class="tank__fill"></span><span class="tank__need"></span></div>
+                <p class="tank__label"><span>Meter A</span><b data-glass-v="A"></b></p>
+              </div>
+              <div class="tank__meter">
+                <div class="tank__glass" data-glass="B"><span class="tank__fill"></span><span class="tank__need"></span></div>
+                <p class="tank__label"><span>Meter B</span><b data-glass-v="B"></b></p>
+              </div>
+            </div>
+            <ul class="build-up">
+              <li><span>Matched in the same quarter-hour</span><span class="v" data-tank-matched>90 kWh</span></li>
+              <li><span>Uncredited excess, earns nothing</span><span class="v" data-tank-excess>10 kWh</span></li>
+              <li class="is-total"><span>Refund</span><span class="v" data-tank-refund>R 45.00</span><span class="f" data-tank-refund-f></span></li>
+            </ul>
+            <p class="small" style="margin-top:14px;color:var(--ink-2)" data-tank-compare></p>
+          </div>
+          <p class="instrument__note">One quarter-hour, worked through. The dashed line in each glass is that meter's use. Refund = Σ meters Σ windows of matched kWh × gen-wheeling rate, in whole cents per meter per TOU window.</p>
+        </div>
+
+        <div class="feature-row" style="margin-top:clamp(64px,8vw,112px)">
+          <div class="feature-row__copy">
+            <h2 class="h-sub">One account, many generators, many meters.</h2>
+            <div class="prose"><p>The Virtual Wheeling account shows what earned the month's refund, the uncredited excess, Eskom's credit note and its 45-day aging, beside the formula that produced the figure.</p></div>
+            <ul class="checklist">
+              <li><strong>Matched at 15-minute grain</strong>, never on monthly totals</li>
+              <li><strong>Batteries enrol as pseudo-meters</strong> and take part in the fill</li>
+              <li><strong>Excess can be routed</strong> to a trader pool instead of earning nothing</li>
+            </ul>
+            <p style="margin-top:18px"><span class="chip chip--person">The monthly refund run is started by a person today</span></p>
+          </div>
+          <figure class="plate feature-row__media">
+            <div class="plate__frame"><img src="assets/shots/vw-account.webp" alt="A Virtual Wheeling account showing the month's refund, the Eskom credit note, matched energy and the uncredited excess." width="1112" height="793" loading="lazy"></div>
+            <figcaption><strong>Virtual Wheeling account.</strong></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="diary-title">
+      <div class="wrap feature-rows">
+        <div class="feature-row">
+          <div class="feature-row__copy">
+            <h2 class="h-sub" id="diary-title">Your electricity diary.</h2>
+            <div class="prose"><p>Each site tells one story, from commissioning to now: was demand met, what did it cost, and what should you do next. The grid's share is shown for what it is, a calculated remainder and not another meter reading.</p></div>
+            <ul class="checklist">
+              <li><strong>Demand coverage</strong> and the energy that came from contracts</li>
+              <li><strong>Ledger plus estimated grid cost</strong> against the all-grid bill</li>
+              <li><strong>A stale meter is flagged</strong> before any Rand figure is shown</li>
+            </ul>
+          </div>
+          <figure class="plate feature-row__media">
+            <div class="plate__frame"><img src="assets/shots/offtaker-dashboard.webp" alt="An off-taker site dashboard telling the site's story since commissioning, with coverage, energy from contracts and cost against the all-grid bill." width="1120" height="700" loading="lazy"></div>
+            <figcaption><strong>Site Dashboard.</strong></figcaption>
+          </figure>
+        </div>
+
+        <div class="feature-row feature-row--flip">
+          <div class="feature-row__copy">
+            <h2 class="h-sub">What a kWh costs you, by route.</h2>
+            <div class="prose"><p>A virtual PPA, a wheeled physical PPA, the wholesale market through a trader, or staying on the grid: each route is priced on your load shape and tariff, with its fit and its spill risk beside the landed cost.</p></div>
+          </div>
+          <figure class="plate feature-row__media">
+            <div class="plate__frame"><img src="assets/shots/perf-routes.webp" alt="A supply route comparison table with landed cost, fit and spill risk for a virtual PPA, a physical PPA, the market via a trader and staying on the grid." width="1130" height="458" loading="lazy"></div>
+            <figcaption><strong>Performance, routes.</strong></figcaption>
+          </figure>
+        </div>
+
+        <div class="split">
+          <div class="split__a stack-l">
+            <h2 class="h-section">Greener, and able to prove it.</h2>
+          </div>
+          <div class="split__b">
+            <ul class="checklist" style="margin-top:0">
+              <li><strong>A dual-method Scope 2 emissions statement</strong>, location-based and market-based</li>
+              <li><strong>Certificates accrued from FINAL settled energy</strong> and retired in your name</li>
+              <li><strong>One invoice per counterparty</strong>, with the green statement beside it</li>
+              <li>A renewable electricity certificate does not reduce carbon tax. <a class="text-link" href="carbon.html">How carbon works on Webill Green</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper section--tight" aria-labelledby="next-title">
+      <div class="wrap">
+        <div class="cta-band">
+          <h2 class="h-section" id="next-title">Bring your sites to the demo world.</h2>
+          <div class="btn-row"><a class="btn btn--ink" href="index.html#walkthrough">Book a walkthrough</a></div>
+          <p class="lede">Or keep reading: the evidence chain, and the market behind your tariff.</p>
+        </div>
+        <ul class="page-next" style="margin-top:56px">
+          <li><a href="how-it-works.html"><strong>How it works</strong><span>The seven stops, the market day and the evidence chain</span></a></li>
+          <li><a href="ipps.html"><strong>For IPPs</strong><span>How the seller allocates and closes the month</span></a></li>
+          <li><a href="carbon.html"><strong>Carbon</strong><span>Certificates, the carbon market and the tax pack</span></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__top">
+        <div class="site-footer__brand">
+          <a class="site-footer__mark" href="index.html"><img src="assets/webill-green-mark.png" alt="" width="40" height="40"><span class="site-footer__name">Webill Green</span></a>
+          <p class="site-footer__tagline">The traded electricity platform. Meters, routes, settles, bills and proves, for every party, with each network charged once.</p>
+        </div>
+        <div class="site-footer__cols">
+          <div>
+            <h2>South Africa</h2>
+            <ul>
+              <li><a href="market.html#history">A century of electricity</a></li>
+              <li><a href="market.html#coming">The changes coming</a></li>
+              <li><a href="index.html#walkthrough">Book a walkthrough</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Platform</h2>
+            <ul>
+              <li><a href="edge.html">The Webill edge</a></li>
+              <li><a href="edge.html#rollout">The roll-out</a></li>
+              <li><a href="how-it-works.html">How it works</a></li>
+              <li><a href="how-it-works.html#evidence">Evidence and controls</a></li>
+              <li><a href="how-it-works.html#integrations">Integrations</a></li>
+              <li><a href="how-it-works.html#glossary">Glossary</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Seats</h2>
+            <ul>
+              <li><a href="ipps.html">IPPs</a></li>
+              <li><a href="off-takers.html">Off-takers</a></li>
+              <li><a href="traders.html">Traders</a></li>
+              <li><a href="carbon.html">Carbon</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer__base">
+        <p>© <span data-year>2026</span> Webill Green. South Africa. All times in SAST.</p>
+        <p>Nothing here is tax or investment advice.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/site.js" defer></script>
+  <script src="assets/instruments.js" defer></script>
+</body>
+</html>

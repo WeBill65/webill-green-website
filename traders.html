@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>For traders · Webill Green</title>
+  <meta name="description" content="Webill Green for licensed electricity traders: trader pools, the hours behind every trade, chain reconciliation and four-eyes risk controls.">
+  <meta name="theme-color" content="#059669">
+  <link rel="icon" href="assets/webill-green-mark.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="wrap site-header__inner">
+      <a class="brand" href="index.html" aria-label="Webill Green home">
+        <img src="assets/webill-green-logo.png" alt="Webill Green" width="1100" height="162">
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <a href="market.html">The market</a>
+        <a href="how-it-works.html">How it works</a>
+        <a href="ipps.html">IPPs</a>
+        <a href="off-takers.html">Off-takers</a>
+        <a href="traders.html">Traders</a>
+        <a href="carbon.html">Carbon</a>
+        <a class="site-nav__edge" href="edge.html">The Webill edge</a>
+      </nav>
+      <div class="site-header__actions">
+        <a class="btn btn--ink btn--small" href="index.html#walkthrough">Book a walkthrough</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+          <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+          Menu
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="wrap page-hero__grid">
+        <p class="page-hero__who">For licensed electricity traders</p>
+        <h1 class="h-display page-hero__title" id="page-title">Buy from many, sell to many.</h1>
+        <p class="lede page-hero__lede">A trader owns no meter and carries both sides of a book. Webill Green runs your trader pools from licence file to monthly statement: who you buy from, who you sell to, the hours each side covers, and your margin hour by hour, under four-eyes risk controls.</p>
+        <div class="btn-row page-hero__aside">
+          <a class="btn btn--ink" href="index.html#walkthrough">Book a walkthrough</a>
+          <a class="btn btn--ghost" href="#fit">Test a supply shape</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper section--tight" aria-labelledby="context-title">
+      <div class="wrap split">
+        <h2 class="visually-hidden" id="context-title">The trader's market</h2>
+        <p class="h-sub split__a">Traders took 56% of the 4.7&nbsp;GW financed between 2023 and 2025, and hold an 18&nbsp;GW pipeline.</p>
+        <div class="split__b stack-l">
+          <p class="lede">Every one of those megawatts is two contracts, a purchase and a sale, that have to settle against each other, hour by hour, across two networks and soon a wholesale market.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fit" aria-labelledby="fit-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="fit-title">The right hours matter as much as the price.</h2>
+          <p class="lede">Two curves with the same daily total can still leave a book long at noon and short at night. Pick a supply shape and see where the hours fail to meet.</p>
+        </div>
+
+        <div class="instrument" data-fit>
+          <div class="instrument__head">
+            <div class="segmented" role="group" aria-label="Supply shape">
+              <button type="button" data-shape="solar" aria-pressed="true">Solar</button>
+              <button type="button" data-shape="wind" aria-pressed="false">Wind</button>
+              <button type="button" data-shape="battery" aria-pressed="false">Solar with a battery</button>
+              <button type="button" data-shape="firm" aria-pressed="false">Firm</button>
+            </div>
+          </div>
+          <div style="grid-column:1/-1">
+            <div class="legend" aria-hidden="true" style="margin-bottom:16px">
+              <span class="legend__item"><span class="swatch swatch--matched"></span>Matched in the right hour</span>
+              <span class="legend__item"><span class="swatch swatch--surplus"></span>Long: supply with no buyer that hour</span>
+              <span class="legend__item"><span class="swatch swatch--short"></span>Short: demand with no supply</span>
+              <span class="legend__item"><span class="swatch swatch--demand"></span>The buyer's demand</span>
+            </div>
+            <div class="fit" aria-hidden="true"></div>
+            <div class="fit-axis" aria-hidden="true"></div>
+            <dl class="fit-sum" aria-live="polite">
+              <div><dt>Daily demand, and daily supply</dt><dd data-fit-total></dd></div>
+              <div><dt>Matched in the right hour</dt><dd data-fit-matched></dd></div>
+              <div><dt>Long</dt><dd data-fit-long></dd></div>
+              <div><dt>Short</dt><dd data-fit-short></dd></div>
+            </dl>
+            <p class="h-minor" style="margin-top:20px" data-fit-pct></p>
+          </div>
+          <p class="instrument__note">Illustrative profiles, each scaled to deliver exactly what the buyer uses in a day. The whole-day totals match every time; the hours do not.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" aria-labelledby="desk-title">
+      <div class="wrap feature-rows">
+        <div class="feature-row">
+          <div class="feature-row__copy">
+            <h2 class="h-sub" id="desk-title">One book, two connected needs.</h2>
+            <div class="prose"><p>The Desk sells the long and buys the short. Buy candidates are ranked against the book's gap and load shape; sell candidates against what the book has spare. A good trade improves the whole book, beyond its own price tag.</p></div>
+          </div>
+          <figure class="plate feature-row__media">
+            <div class="plate__frame"><img src="assets/shots/trader-commercial-buy.webp" alt="A trader pool's commercial workspace: the book's position, ranked buy candidates and the terms of a selected purchase being simulated." width="1120" height="700" loading="lazy"></div>
+            <figcaption><strong>Trader pool, Commercial.</strong></figcaption>
+          </figure>
+        </div>
+
+        <ol class="desk-steps" aria-label="The trader's Desk">
+          <li><b>1</b><strong>Position</strong><span>What the book needs, long and short, by hour</span></li>
+          <li><b>2</b><strong>Candidates</strong><span>Who to sell to and who to buy from</span></li>
+          <li><b>3</b><strong>Basket</strong><span>Terms per candidate, each simulated</span></li>
+          <li><b>4</b><strong>Strategy board</strong><span>Buy legs, pools and sell legs together</span></li>
+          <li><b>5</b><strong>Commit</strong><span>Nominate, then build the proposals</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="chain-title">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <h2 class="h-section" id="chain-title">A chain that reconciles itself.</h2>
+          <p class="lede">A trader sits between contracts. On the 1st of every month, chain reconciliation checks that the volumes and the margin add up from the generator, through each trader, to the buyer.</p>
+        </div>
+        <ol class="chain">
+          <li class="chain__party"><strong>The IPP</strong><span>Sells into the book</span><b>Energy sent</b></li>
+          <li class="chain__link" aria-hidden="true">Trader buys</li>
+          <li class="chain__party chain__party--trader"><strong>Your trader pool</strong><span>No meter. Settles on nominations</span><b>Sell − buy − wheeling</b></li>
+          <li class="chain__link" aria-hidden="true">Trader sells</li>
+          <li class="chain__party"><strong>The off-taker</strong><span>Buys on delivered energy</span><b>Energy delivered</b></li>
+        </ol>
+        <div class="split" style="margin-top:48px">
+          <div class="split__a">
+            <p class="h-minor">Your margin, every hour</p>
+            <p class="prose" style="margin-top:8px">Sell, less buy, less wheeling, across about 8,760 hours a year. Pools can chain to other pools, trader to trader, and each link is its own contract with its own statement.</p>
+          </div>
+          <div class="split__b">
+            <ul class="checklist" style="margin-top:0">
+              <li><strong>Nominations are binding:</strong> settlement reads them where no meter can speak, and imbalance is judged against them</li>
+              <li><strong>Proposals for next month</strong> arrive on the 20th</li>
+              <li><strong>Batteries in the book</strong> are planned with the rest of it: dispatch is part of the strategy run</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" aria-labelledby="controls-title">
+      <div class="wrap feature-rows">
+        <div class="feature-row feature-row--flip">
+          <div class="feature-row__copy">
+            <h2 class="h-sub" id="controls-title">Four eyes on every lever that moves money.</h2>
+            <div class="prose"><p>Risk limits, the kill switch and the automation level change only through four-eyes approval. The engine computes and proposes; a person confirms. NERSA's draft trading-platform framework would bar automated trading for five years, so the desk defaults to human confirmation.</p></div>
+            <ul class="checklist">
+              <li><strong>Risk limits on exposure</strong>, with margin and value-at-risk fan charts beside them</li>
+              <li><strong>A kill switch</strong> for automated actions</li>
+              <li><strong>Onboarding that waits for evidence:</strong> licence, network roles, activities and limits</li>
+            </ul>
+          </div>
+          <figure class="plate feature-row__media">
+            <div class="plate__frame"><img src="assets/shots/trader-setup-controls.webp" alt="Trader pool onboarding: a draft that saves section by section, with the licence, network roles and operational accountability still to complete." width="1120" height="700" loading="lazy"></div>
+            <figcaption><strong>Trader pool onboarding.</strong></figcaption>
+          </figure>
+        </div>
+
+        <div class="feature-row">
+          <div class="feature-row__copy">
+            <h2 class="h-sub">Bid the book's net position.</h2>
+            <div class="prose"><p>Your BRP seat bids the pool's net position into the day-ahead auction before 10:00 SAST the day before, corrects undelivered hours in five intraday auctions and answers for imbalance after delivery, all on a market clock in SAST.</p></div>
+            <p style="margin-top:18px"><span class="chip chip--simulated">Simulated until SAWEM opens</span></p>
+            <p style="margin-top:18px"><a class="text-link" href="how-it-works.html#market-day">The market day, gate by gate</a></p>
+          </div>
+          <figure class="plate feature-row__media">
+            <div class="plate__frame"><img src="assets/shots/bid-desk.webp" alt="The Bid Desk with the trading day's four stages, submissions, items needing attention and the portfolio's hourly position." width="1600" height="1000" loading="lazy"></div>
+            <figcaption><strong>Bid Desk.</strong></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight" aria-labelledby="next-title">
+      <div class="wrap">
+        <div class="cta-band">
+          <h2 class="h-section" id="next-title">Run a pool on the demo world.</h2>
+          <div class="btn-row"><a class="btn btn--ink" href="index.html#walkthrough">Book a walkthrough</a></div>
+          <p class="lede">Or keep reading: how the market day works, gate by gate.</p>
+        </div>
+        <ul class="page-next" style="margin-top:56px">
+          <li><a href="how-it-works.html"><strong>How it works</strong><span>The seven stops, the market day and the evidence chain</span></a></li>
+          <li><a href="ipps.html"><strong>For IPPs</strong><span>The seller's side of your purchases</span></a></li>
+          <li><a href="off-takers.html"><strong>For off-takers</strong><span>The buyer's side of your sales</span></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__top">
+        <div class="site-footer__brand">
+          <a class="site-footer__mark" href="index.html"><img src="assets/webill-green-mark.png" alt="" width="40" height="40"><span class="site-footer__name">Webill Green</span></a>
+          <p class="site-footer__tagline">The traded electricity platform. Meters, routes, settles, bills and proves, for every party, with each network charged once.</p>
+        </div>
+        <div class="site-footer__cols">
+          <div>
+            <h2>South Africa</h2>
+            <ul>
+              <li><a href="market.html#history">A century of electricity</a></li>
+              <li><a href="market.html#coming">The changes coming</a></li>
+              <li><a href="index.html#walkthrough">Book a walkthrough</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Platform</h2>
+            <ul>
+              <li><a href="edge.html">The Webill edge</a></li>
+              <li><a href="edge.html#rollout">The roll-out</a></li>
+              <li><a href="how-it-works.html">How it works</a></li>
+              <li><a href="how-it-works.html#evidence">Evidence and controls</a></li>
+              <li><a href="how-it-works.html#integrations">Integrations</a></li>
+              <li><a href="how-it-works.html#glossary">Glossary</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Seats</h2>
+            <ul>
+              <li><a href="ipps.html">IPPs</a></li>
+              <li><a href="off-takers.html">Off-takers</a></li>
+              <li><a href="traders.html">Traders</a></li>
+              <li><a href="carbon.html">Carbon</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer__base">
+        <p>© <span data-year>2026</span> Webill Green. South Africa. All times in SAST.</p>
+        <p>Nothing here is tax or investment advice.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/site.js" defer></script>
+  <script src="assets/instruments.js" defer></script>
+</body>
+</html>
