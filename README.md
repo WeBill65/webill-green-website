@@ -18,5 +18,5 @@ GitHub Pages serves the `main` branch root. Every push to `main` updates the liv
 
 ## Before you edit
 
-- The walkthrough form addresses requests to `CONTACT_EMAIL` at the top of `assets/site.js`.
+- The walkthrough request form is a HubSpot form (portal 149531349, EU data centre). Its IDs are in `HUBSPOT_FORM` at the top of `assets/site.js`; edit the fields, consent text and notifications in HubSpot.
 - The header and footer are repeated in every page. Change all eight when the navigation changes.

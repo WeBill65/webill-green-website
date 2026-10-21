@@ -7,8 +7,38 @@
 
   /* ---------- Config ---------- */
 
-  // Where walkthrough requests go. Set this before publishing.
-  var CONTACT_EMAIL = "hello@webill.net";
+  // The walkthrough request form is a HubSpot form (EU data centre).
+  var HUBSPOT_FORM = {
+    script: "https://js-eu1.hsforms.net/forms/embed/v2.js",
+    portalId: "149531349",
+    formId: "84a06cce-eb21-4d0b-b9a3-4a0628cdf83b",
+    region: "eu1"
+  };
+
+  // The site's form styling, applied inside HubSpot's form frame (or the page, for a raw HTML form).
+  var HUBSPOT_FONT = "https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap";
+  var HUBSPOT_CSS = [
+    "body{margin:0;background:transparent;}",
+    ".hs-form,.hs-form *{font-family:'Archivo',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif!important;}",
+    ".hs-form fieldset{max-width:none!important;}",
+    ".hs-form .hs-form-field{margin-bottom:18px!important;}",
+    ".hs-form .hs-form-field>label{display:block!important;margin-bottom:6px!important;font-size:15px!important;font-weight:600!important;color:#212a34!important;}",
+    ".hs-form .hs-form-required{color:#be123c!important;margin-left:2px;}",
+    ".hs-form .input{margin-right:0!important;}",
+    ".hs-form .hs-input:not([type=checkbox]):not([type=radio]){width:100%!important;box-sizing:border-box!important;min-height:48px!important;padding:10px 14px!important;border:1.5px solid #c9d5cf!important;border-radius:10px!important;background:#fff!important;font-size:16px!important;color:#212a34!important;box-shadow:none!important;transition:border-color .15s,box-shadow .15s;}",
+    ".hs-form textarea.hs-input{min-height:112px!important;resize:vertical;}",
+    ".hs-form .hs-input:not([type=checkbox]):not([type=radio]):focus{outline:none!important;border-color:#059669!important;box-shadow:0 0 0 4px rgba(5,150,105,.16)!important;}",
+    ".hs-form .hs-input.invalid.error{border-color:#be123c!important;}",
+    ".hs-form .hs-error-msgs{list-style:none!important;margin:6px 0 0!important;padding:0!important;}",
+    ".hs-form .hs-error-msg,.hs-form .hs-error-msgs label{font-size:14px!important;font-weight:560!important;color:#be123c!important;}",
+    ".hs-form .legal-consent-container,.hs-form .legal-consent-container p,.hs-form .legal-consent-container span{font-size:14px!important;line-height:1.5!important;color:#47535f!important;}",
+    ".hs-form .inputs-list{list-style:none!important;margin:0!important;padding:0!important;}",
+    ".hs-form input[type=checkbox],.hs-form input[type=radio]{width:18px!important;height:18px!important;margin-right:8px!important;accent-color:#059669;vertical-align:-3px;}",
+    ".hs-form .hs-button{display:inline-flex!important;align-items:center;min-height:50px!important;padding:12px 26px!important;border:0!important;border-radius:999px!important;background:#212a34!important;color:#fff!important;font-size:16px!important;font-weight:620!important;line-height:1.1!important;box-shadow:none!important;cursor:pointer;transition:box-shadow .2s;}",
+    ".hs-form .hs-button:hover{background:linear-gradient(135deg,#059669 0%,#10b981 55%,#0d9488 100%)!important;box-shadow:0 10px 22px -10px rgba(5,150,105,.65)!important;}",
+    ".hs-form .hs-button:focus-visible{outline:2.5px solid #059669!important;outline-offset:3px;}",
+    ".submitted-message,.submitted-message p{font-family:'Archivo',ui-sans-serif,system-ui,sans-serif!important;font-size:17px!important;line-height:1.5!important;color:#064e3b!important;}"
+  ].join("");
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -862,72 +892,99 @@
 
   /* ---------- Walkthrough form ---------- */
 
-  function initForm() {
-    document.querySelectorAll("[data-walkthrough]").forEach(function (form) {
-      var panel = form.querySelector("[data-request]");
-      var text = form.querySelector("[data-request-text]");
-      var status = form.querySelector("[data-form-status]");
-      var mail = form.querySelector("[data-request-mail]");
-      form.querySelector("[data-request-addr]").textContent = CONTACT_EMAIL;
+  function styleHubSpotForm(target) {
+    var frame = target.querySelector("iframe");
+    var doc = document;
+    if (frame) {
+      try {
+        doc = frame.contentDocument;
+      } catch (err) {
+        return;
+      }
+      if (!doc) return;
+    } else if (document.getElementById("hs-site-style")) {
+      return;
+    }
+    var font = doc.createElement("link");
+    font.rel = "stylesheet";
+    font.href = HUBSPOT_FONT;
+    doc.head.appendChild(font);
+    var style = doc.createElement("style");
+    style.id = "hs-site-style";
+    style.textContent = HUBSPOT_CSS;
+    doc.head.appendChild(style);
+    if (!frame) return;
+    // Keep the frame exactly as tall as the restyled form, including error messages.
+    // HubSpot sets its own height from an unstyled measurement, so re-apply after it does.
+    var fit = function () {
+      var h = Math.ceil(doc.body.getBoundingClientRect().height);
+      if (h && Math.abs(frame.offsetHeight - h) > 1) frame.style.height = h + "px";
+    };
+    if ("ResizeObserver" in window) new ResizeObserver(fit).observe(doc.body);
+    if ("MutationObserver" in window) {
+      new MutationObserver(fit).observe(frame, { attributes: true, attributeFilter: ["style", "height"] });
+    }
+    window.addEventListener("resize", fit);
+    font.addEventListener("load", fit);
+    [300, 1000, 2500, 5000].forEach(function (ms) {
+      setTimeout(fit, ms);
+    });
+    fit();
+  }
 
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        var ok = true;
-        form.querySelectorAll("[required]").forEach(function (input) {
-          var field = input.closest(".field");
-          var old = field.querySelector(".field__error");
-          if (old) old.remove();
-          var bad = !input.value.trim() || (input.type === "email" && !/^\S+@\S+\.\S+$/.test(input.value));
-          field.classList.toggle("is-invalid", bad);
-          input.setAttribute("aria-invalid", String(bad));
-          if (bad) {
-            ok = false;
-            var msg = document.createElement("p");
-            msg.className = "field__error";
-            msg.id = input.id + "-error";
-            msg.textContent = input.type === "email" ? "Enter a work email, like name@company.co.za." : "Enter your name so we know who to reply to.";
-            field.appendChild(msg);
-            input.setAttribute("aria-describedby", msg.id);
-          } else {
-            input.removeAttribute("aria-describedby");
+  function initHubSpotForm() {
+    var target = document.querySelector("[data-hubspot-form]");
+    if (!target) return;
+    var loading = document.querySelector("[data-hs-loading]");
+    var error = document.querySelector("[data-hs-error]");
+    var started = false;
+
+    function fail() {
+      if (target.querySelector("form, iframe")) return;
+      if (loading) loading.hidden = true;
+      if (error) error.hidden = false;
+    }
+
+    function load() {
+      if (started) return;
+      started = true;
+      var script = document.createElement("script");
+      script.src = HUBSPOT_FORM.script;
+      script.charset = "utf-8";
+      script.async = true;
+      script.onerror = fail;
+      script.onload = function () {
+        if (!window.hbspt || !window.hbspt.forms) return fail();
+        window.hbspt.forms.create({
+          portalId: HUBSPOT_FORM.portalId,
+          formId: HUBSPOT_FORM.formId,
+          region: HUBSPOT_FORM.region,
+          target: "#" + target.id,
+          onFormReady: function () {
+            if (loading) loading.hidden = true;
+            target.classList.add("is-ready");
+            styleHubSpotForm(target);
           }
         });
-        if (!ok) {
-          var first = form.querySelector('[aria-invalid="true"]');
-          if (first) first.focus();
-          return;
-        }
-        var data = new FormData(form);
-        var subject = "Walkthrough request: " + data.get("seat");
-        var body =
-          "Name: " + data.get("name") + "\n" +
-          "Email: " + data.get("email") + "\n" +
-          "Organisation: " + (data.get("organisation") || "") + "\n" +
-          "Seat: " + data.get("seat") + "\n\n" +
-          (data.get("message") || "");
-        text.value = subject + "\n\n" + body;
-        mail.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-        panel.hidden = false;
-        status.textContent = "Request ready. Copy it into an email to " + CONTACT_EMAIL + ", or open it in your email app.";
-        text.focus();
-        text.select();
-      });
+        setTimeout(fail, 10000);
+      };
+      document.head.appendChild(script);
+    }
 
-      form.querySelector("[data-request-copy]").addEventListener("click", function () {
-        var done = function () {
-          status.textContent = "Copied. Paste it into an email to " + CONTACT_EMAIL + ".";
-        };
-        var fallback = function () {
-          text.focus();
-          text.select();
-          status.textContent = "The request is selected. Copy it with your keyboard.";
-        };
-        try {
-          navigator.clipboard.writeText(text.value).then(done, fallback);
-        } catch (err) {
-          fallback();
-        }
-      });
+    // Load HubSpot only when the visitor nears the form, or arrives on it.
+    if (location.hash === "#walkthrough" || !("IntersectionObserver" in window)) {
+      load();
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      if (entries.some(function (e) { return e.isIntersecting; })) {
+        io.disconnect();
+        load();
+      }
+    }, { rootMargin: "800px 0px" });
+    io.observe(target);
+    window.addEventListener("hashchange", function () {
+      if (location.hash === "#walkthrough") load();
     });
   }
 
@@ -971,7 +1028,7 @@
     initTabs();
     initStatement();
     initRateChart();
-    initForm();
+    initHubSpotForm();
     initRanges();
     document.dispatchEvent(new CustomEvent("wg:ready"));
   }

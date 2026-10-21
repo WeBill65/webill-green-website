@@ -2839,95 +2839,6 @@ button.node[aria-pressed="true"] .node__symbol {
   grid-column: 7 / span 6;
 }
 
-.form {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px 20px;
-  background: var(--paper);
-  border-radius: var(--radius-plate);
-  padding: clamp(22px, 2.8vw, 36px);
-  box-shadow: 0 0 0 1px rgb(33 42 52 / 0.07);
-}
-
-.field {
-  display: grid;
-  gap: 6px;
-}
-
-.field--wide {
-  grid-column: 1 / -1;
-}
-
-.field label {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.field input,
-.field select,
-.field textarea {
-  width: 100%;
-  min-height: 48px;
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 1.5px solid var(--rule);
-  background: var(--paper);
-  font-size: 16px;
-  transition: border-color 150ms var(--ease), box-shadow 150ms var(--ease);
-}
-
-.field textarea {
-  min-height: 112px;
-  resize: vertical;
-  line-height: 1.5;
-}
-
-.field input:hover,
-.field select:hover,
-.field textarea:hover {
-  border-color: #a9b8b0;
-}
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus {
-  outline: none;
-  border-color: var(--signal);
-  box-shadow: 0 0 0 4px rgb(5 150 105 / 0.16);
-}
-
-.field__hint {
-  font-size: 14px;
-  color: var(--ink-3);
-}
-
-.field.is-invalid input,
-.field.is-invalid select {
-  border-color: #be123c;
-}
-
-.field__error {
-  font-size: 14px;
-  color: #be123c;
-  font-weight: 560;
-}
-
-.form__foot {
-  grid-column: 1 / -1;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  margin-top: 4px;
-}
-
-.form__status {
-  font-size: 15px;
-  color: var(--readout);
-  font-weight: 560;
-}
-
 .contact__links {
   margin-top: 28px;
   list-style: none;
@@ -4153,10 +4064,6 @@ input[type="range"]:focus-visible::-webkit-slider-thumb {
     columns: 1;
   }
 
-  .form {
-    grid-template-columns: 1fr;
-  }
-
   .site-footer__cols {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -4548,43 +4455,6 @@ input[type="range"]:focus-visible::-webkit-slider-thumb {
   .mclock--3 {
     grid-template-columns: 1fr;
   }
-}
-
-/* ---------- Prepared walkthrough request ---------- */
-
-.request {
-  display: grid;
-  gap: 12px;
-  padding-top: 18px;
-  border-top: 1px solid var(--rule);
-}
-
-.request__to {
-  font-size: 15.5px;
-  color: var(--ink-2);
-}
-
-.request__addr {
-  font-weight: 650;
-  color: var(--ink);
-  user-select: all;
-}
-
-.request__text {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1.5px solid var(--rule);
-  background: var(--ground);
-  font-size: 15px;
-  line-height: 1.5;
-  resize: vertical;
-}
-
-.request__text:focus {
-  outline: none;
-  border-color: var(--signal);
-  box-shadow: 0 0 0 4px rgb(5 150 105 / 0.16);
 }
 
 /* ---------- The market: history and what's coming ---------- */
@@ -5467,4 +5337,29 @@ input[type="range"]:focus-visible::-webkit-slider-thumb {
   .rollout {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---------- HubSpot walkthrough form ---------- */
+
+.hs-card {
+  background: var(--paper);
+  border-radius: var(--radius-plate);
+  padding: clamp(22px, 2.8vw, 36px);
+  box-shadow: 0 0 0 1px rgb(33 42 52 / 0.07);
+  min-height: 220px;
+}
+
+.hs-card__status {
+  font-size: 15.5px;
+  color: var(--ink-3);
+}
+
+.hs-card__status--error {
+  color: var(--amber);
+  font-weight: 560;
+}
+
+.hs-embed iframe {
+  width: 100% !important;
+  border: 0;
 }

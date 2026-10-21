@@ -829,7 +829,7 @@
       <div class="wrap contact">
         <div class="contact__copy">
           <h2 class="h-section" id="walk-title">See it run on the demo world.</h2>
-          <p class="lede" style="margin-top:24px">A walkthrough runs on Webill Green's deterministic demo world: a simulated market of fifty participants, a live 20-minute meter simulator and the screens your team would use. Tell us your seat and we'll start there.</p>
+          <p class="lede" style="margin-top:24px">A walkthrough runs on Webill Green's deterministic demo world: a simulated market of fifty participants, a live 20-minute meter simulator and the screens your team would use. Tell us what you'd like to see and we'll start there.</p>
           <ul class="contact__links">
             <li><a class="text-link" href="market.html">A century of South African electricity, and what comes next</a></li>
             <li><a class="text-link" href="how-it-works.html">How the platform works, end to end</a></li>
@@ -837,51 +837,11 @@
           </ul>
         </div>
         <div class="contact__form">
-          <form class="form" data-walkthrough novalidate>
-            <div class="field">
-              <label for="f-name">Your name</label>
-              <input id="f-name" name="name" autocomplete="name" required>
-            </div>
-            <div class="field">
-              <label for="f-email">Work email</label>
-              <input id="f-email" name="email" type="email" autocomplete="email" required>
-            </div>
-            <div class="field">
-              <label for="f-org">Organisation</label>
-              <input id="f-org" name="organisation" autocomplete="organization">
-            </div>
-            <div class="field">
-              <label for="f-seat">Your seat</label>
-              <select id="f-seat" name="seat">
-                <option>IPP operator</option>
-                <option>Off-taker energy manager</option>
-                <option>Trader</option>
-                <option>Organisation bidder (BRP)</option>
-                <option>Finance lead</option>
-                <option>Carbon lead</option>
-                <option>Network operator or municipality</option>
-                <option>Something else</option>
-              </select>
-            </div>
-            <div class="field field--wide">
-              <label for="f-what">What should we show you?</label>
-              <textarea id="f-what" name="message" placeholder="For example: how a Virtual Wheeling refund is reconciled across our meters"></textarea>
-            </div>
-            <div class="form__foot">
-              <p class="field__hint">The request is put together here for you to send. Nothing leaves this page on its own.</p>
-              <button class="btn btn--ink" type="submit">Prepare my request</button>
-            </div>
-            <div class="request field--wide" data-request hidden>
-              <p class="request__to">Send it to <span class="request__addr" data-request-addr></span></p>
-              <label class="visually-hidden" for="f-request">Your walkthrough request</label>
-              <textarea id="f-request" class="request__text" data-request-text readonly rows="7"></textarea>
-              <div class="btn-row">
-                <button class="btn btn--ink btn--small" type="button" data-request-copy>Copy request</button>
-                <a class="btn btn--ghost btn--small" data-request-mail href="#">Open in your email app</a>
-              </div>
-              <p class="form__status" data-form-status role="status"></p>
-            </div>
-          </form>
+          <div class="hs-card">
+            <div id="hubspot-walkthrough" class="hs-embed" data-hubspot-form></div>
+            <p class="hs-card__status" data-hs-loading>Loading the request form…</p>
+            <p class="hs-card__status hs-card__status--error" data-hs-error role="status" hidden>The request form could not load. If a content blocker is on, allow this site and reload the page.</p>
+          </div>
         </div>
       </div>
     </section>
