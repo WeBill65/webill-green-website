@@ -917,14 +917,48 @@
     // Keep the frame exactly as tall as the restyled form, including error messages.
     // HubSpot sets its own height from an unstyled measurement, so re-apply after it does.
     var fit = function () {
-      var h = Math.ceil(doc.body.getBoundingClientRect().height);
+      // Content height, plus room for anything absolutely positioned over the form, such as
+      // the reCAPTCHA challenge, so it is never clipped. Fixed overlays are ignored: they
+      // match the frame's own height and would grow it without end.
+      // HubSpot stretches the frame's body to the frame's height, so measure the content itself.
+      var win = doc.defaultView;
+      var h = 0;
+      var kids = doc.body.children;
+      for (var k = 0; k < kids.length; k++) {
+        var ks = win.getComputedStyle(kids[k]);
+        if (ks.position === "absolute" || ks.position === "fixed" || ks.display === "none") continue;
+        h = Math.max(h, Math.ceil(kids[k].getBoundingClientRect().bottom + (parseFloat(ks.marginBottom) || 0)));
+      }
+      h += 4;
+      var els = doc.body.querySelectorAll("div, iframe");
+      for (var i = 0; i < els.length; i++) {
+        var cs = win.getComputedStyle(els[i]);
+        if (cs.position !== "absolute" || cs.visibility === "hidden" || cs.display === "none") continue;
+        var r = els[i].getBoundingClientRect();
+        if (r.height > 0 && r.bottom > 0) h = Math.max(h, Math.ceil(r.bottom) + 16);
+      }
       if (h && Math.abs(frame.offsetHeight - h) > 1) frame.style.height = h + "px";
     };
-    if ("ResizeObserver" in window) new ResizeObserver(fit).observe(doc.body);
+    if ("ResizeObserver" in window) {
+      // Watch the form's own container: the frame's body is stretched by HubSpot and never changes size.
+      var ro = new ResizeObserver(fit);
+      ro.observe(doc.body);
+      Array.prototype.forEach.call(doc.body.children, function (child) {
+        ro.observe(child);
+      });
+    }
+    // The reCAPTCHA challenge is added to the frame's body when it is needed.
+    if ("MutationObserver" in window) {
+      new MutationObserver(fit).observe(doc.body, { childList: true, attributes: true, subtree: true, attributeFilter: ["style"] });
+    }
     if ("MutationObserver" in window) {
       new MutationObserver(fit).observe(frame, { attributes: true, attributeFilter: ["style", "height"] });
     }
-    window.addEventListener("resize", fit);
+    window.addEventListener("resize", function () {
+      fit();
+      setTimeout(fit, 150);
+      setTimeout(fit, 600);
+    });
     font.addEventListener("load", fit);
     [300, 1000, 2500, 5000].forEach(function (ms) {
       setTimeout(fit, ms);
