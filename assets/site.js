@@ -1040,6 +1040,64 @@
     });
   }
 
+  /* ---------- Films: silent loops that play only while on screen ---------- */
+
+  // Reduced motion: nothing starts on its own; the poster shows and the button offers play.
+  function initFilms() {
+    var films = Array.prototype.slice.call(document.querySelectorAll("video[data-film]"));
+    if (!films.length) return;
+
+    function setButton(video) {
+      var btn = video.parentNode.querySelector("[data-film-toggle]");
+      if (!btn) return;
+      var paused = video.paused;
+      if (paused) btn.setAttribute("data-paused", "");
+      else btn.removeAttribute("data-paused");
+      btn.setAttribute("aria-label", paused ? "Play film" : "Pause film");
+    }
+
+    function play(video) {
+      video.preload = "auto";
+      var p = video.play();
+      if (p && p.catch) p.catch(function () { setButton(video); });
+    }
+
+    films.forEach(function (video) {
+      video.dataset.held = reduceMotion ? "1" : "";
+      video.addEventListener("play", function () { setButton(video); });
+      video.addEventListener("pause", function () { setButton(video); });
+      var btn = video.parentNode.querySelector("[data-film-toggle]");
+      if (btn) {
+        btn.addEventListener("click", function () {
+          if (video.paused) {
+            video.dataset.held = "";
+            play(video);
+          } else {
+            video.dataset.held = "1";
+            video.pause();
+          }
+        });
+      }
+      setButton(video);
+    });
+
+    if (!("IntersectionObserver" in window)) {
+      films.forEach(function (video) { if (!video.dataset.held) play(video); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var video = entry.target;
+        if (entry.isIntersecting) {
+          if (!video.dataset.held) play(video);
+        } else if (!video.paused) {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.35 });
+    films.forEach(function (video) { io.observe(video); });
+  }
+
   // Shared helpers for page-specific instruments (instruments.js).
   window.WG = {
     fmtNum: fmtNum,
@@ -1064,6 +1122,7 @@
     initRateChart();
     initHubSpotForm();
     initRanges();
+    initFilms();
     document.dispatchEvent(new CustomEvent("wg:ready"));
   }
 

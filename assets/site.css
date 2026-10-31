@@ -2361,6 +2361,61 @@ button.node[aria-pressed="true"] .node__symbol {
   height: auto;
 }
 
+/* A product film in a plate: the poster holds the frame until it plays. */
+.plate__frame--film {
+  position: relative;
+}
+
+.plate__film {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1152 / 720;
+  background: var(--ground);
+}
+
+.film-toggle {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(33 42 52 / 0.62);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 160ms ease, transform 140ms var(--ease);
+}
+
+.film-toggle:active {
+  transform: scale(0.94);
+}
+
+.film-toggle svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.film-toggle__play,
+.film-toggle[data-paused] .film-toggle__pause {
+  display: none;
+}
+
+.film-toggle[data-paused] .film-toggle__play {
+  display: block;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .film-toggle:hover {
+    background: rgb(33 42 52 / 0.86);
+  }
+}
+
 .plate figcaption {
   margin-top: 12px;
   font-stretch: 87.5%;
