@@ -1,0 +1,187 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /PieceInfo << /WB << /Private (789c8d53cb6edb301034daf4c2afd84b80e450815263373d3ab1d00af10b929df44a5bb444581605726dc7e77e54effdb22cf5480b9d7a10385aee0c6667a55f38180c3e9eaf50bee281d069158f27d1fc3b3c2c164f309e4f208e9227f8f3bb39a7d12c5a25753dfcb95c24eb3864b1b27b98aa83420ba24c217cadb43d1ac95646a4d280efd843d868bdb72c9115043c18b1651c3e47e10b3c4e17493881249aada7e3553861e3a2a0eea2d13b4b23c1485bc92dca147409984b3a24a4e2026785390830ce802d4565738d1eac5115ca0a54d4ad2ce42acba545d869035b7d924664126ebe8eae6f3dd6bade1829b639e99351ce7eb484e33f3a74410c773cb612ec59c4f06d780d37fe67f272ebeee69a6ca168616d2b55168dda1c9d0aa3649a39c8a8c19da0499dc27f30c75565f449141632234aecac7666dc9c2e1824ebe8bcd7f1796c264ca64a10d84852978b8c2a6eeab6a7c980a48ea46b2a61f002b25d21a08668b96c5618c390f37d837c8ff38383ddc37b86e8ed9e7bbc1e6e346cc1fda80f5a5acf27d5828e73d7a904777dd09217952c81fcaa6e535f3c0eb3979afc8e7a3e934a51f804fda053ed80cffba0e53cd45f09143a637ff7c1d85cbb443328a54c2d5cf4d1d01c28cbda8dfbe8e8da42258dd2a9c7962e1c1ff40e820607353e5fe57828e8071c0cce9f2aaa5bf1e10d7ca7374e) >> >> >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 8 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> >>
+endobj
+8 0 obj
+<< /Length 6447 >>
+stream
+q BT /F2 64 Tf 0.99 0.91 0.93 rg 0.71 0.71 -0.71 0.71 130.9 210.5 Tm (SIMULATED) Tj ET Q
+1 0.95 0.95 rg 507.09 790 47.91 12 re f
+BT /F2 6.5 Tf 0.75 0.07 0.24 rg 512.09 793.5 Td (SIMULATED) Tj ET
+0.95 0.96 0.98 rg 466 790 37.09 12 re f
+BT /F2 6.5 Tf 0.2 0.25 0.33 rg 471 793.5 Td (CLOSED) Tj ET
+0.95 0.96 0.98 rg 422.02 790 39.98 12 re f
+BT /F2 6.5 Tf 0.2 0.25 0.33 rg 427.02 793.5 Td (PREVIEW) Tj ET
+BT /F2 7 Tf 0.39 0.45 0.55 rg 40 794 Td (TRADING BOOK AND RISK \267 RISK LIMITS AND EXPOSURE) Tj ET
+BT /F2 18 Tf 0.13 0.16 0.2 rg 40 774 Td (Risk Limits and Exposure) Tj ET
+BT /F1 8.5 Tf 0.28 0.33 0.41 rg 40 760 Td (Trader 1 \267 5 books) Tj ET
+BT /F2 8.5 Tf 0.2 0.25 0.33 rg 40 748 Td (Sep 2026) Tj ET
+BT /F1 7 Tf 0.39 0.45 0.55 rg 487.69 754 Td (Prepared for Trader 1) Tj ET
+0 0.6 0.34 rg 40 740 515 2 re f
+BT /F2 11 Tf 0.12 0.16 0.23 rg 40 715 Td (All 5 limits were respected on the one day with a risk snapshot. Utilisation is highest for coverage) Tj ET
+BT /F2 11 Tf 0.12 0.16 0.23 rg 40 700 Td (\(76%\).) Tj ET
+q 0.89 0.91 0.94 RG 0.6 w 40 624 98.2 58 re S Q
+BT /F2 6.5 Tf 0.58 0.64 0.72 rg 48 670 Td (LIMITS BREACHED) Tj ET
+BT /F2 13 Tf 0.02 0.37 0.27 rg 48 652 Td (0) Tj ET
+q 0.89 0.91 0.94 RG 0.6 w 144.2 624 98.2 58 re S Q
+BT /F2 6.5 Tf 0.58 0.64 0.72 rg 152.2 670 Td (HIGHEST UTILISATION) Tj ET
+BT /F2 13 Tf 0.12 0.16 0.23 rg 152.2 652 Td (76%) Tj ET
+BT /F1 6.5 Tf 0.39 0.45 0.55 rg 152.2 630 Td (Coverage) Tj ET
+q 0.89 0.91 0.94 RG 0.6 w 248.4 624 98.2 58 re S Q
+BT /F2 6.5 Tf 0.58 0.64 0.72 rg 256.4 670 Td (VAR 95% \(1-DAY\)) Tj ET
+BT /F2 13 Tf 0.58 0.64 0.72 rg 256.4 652 Td (No data) Tj ET
+BT /F1 6.5 Tf 0.39 0.45 0.55 rg 256.4 630 Td (No risk distribution) Tj ET
+q 0.89 0.91 0.94 RG 0.6 w 352.6 624 98.2 58 re S Q
+BT /F2 6.5 Tf 0.58 0.64 0.72 rg 360.6 670 Td (EXPECTED SHORTFALL \205) Tj ET
+BT /F2 13 Tf 0.58 0.64 0.72 rg 360.6 652 Td (No data) Tj ET
+BT /F1 6.5 Tf 0.39 0.45 0.55 rg 360.6 630 Td (No risk distribution) Tj ET
+q 0.89 0.91 0.94 RG 0.6 w 456.8 624 98.2 58 re S Q
+BT /F2 6.5 Tf 0.58 0.64 0.72 rg 464.8 670 Td (APPROVALS GRANTED) Tj ET
+BT /F2 13 Tf 0.12 0.16 0.23 rg 464.8 652 Td (0) Tj ET
+BT /F2 9.5 Tf 0.12 0.16 0.23 rg 40 599 Td (Coverage is the tightest limit.) Tj ET
+BT /F2 7 Tf 0.2 0.25 0.33 rg 40 563 Td (Coverage) Tj ET
+1 0.89 0.9 rg 150 558 239.89 16 re f
+1 0.95 0.78 rg 389.89 558 55.36 16 re f
+0.93 0.99 0.96 rg 445.25 558 69.75 16 re f
+0.13 0.16 0.2 rg 150 563 317.39 6 re f
+BT /F1 6.5 Tf 0.39 0.45 0.55 rg 470.39 563 Td (86) Tj ET
+BT /F2 9.5 Tf 0.12 0.16 0.23 rg 40 399 Td (Margin at risk is within its limit.) Tj ET
+BT /F2 7 Tf 0.2 0.25 0.33 rg 40 363 Td (Margin at risk) Tj ET
+0.93 0.99 0.96 rg 150 358 198.37 16 re f
+1 0.95 0.78 rg 348.37 358 119.02 16 re f
+1 0.89 0.9 rg 467.39 358 47.61 16 re f
+0.13 0.16 0.2 rg 150 363 190.43 6 re f
+BT /F1 6.5 Tf 0.39 0.45 0.55 rg 343.43 363 Td (24) Tj ET
+BT /F2 9.5 Tf 0.12 0.16 0.23 rg 40 199 Td (Limits) Tj ET
+0.97 0.98 0.99 rg 40 177 515 15 re f
+BT /F2 6.5 Tf 0.39 0.45 0.55 rg 44 182 Td (LIMIT) Tj ET
+BT /F2 6.5 Tf 0.39 0.45 0.55 rg 180.59 182 Td (WARN) Tj ET
+BT /F2 6.5 Tf 0.39 0.45 0.55 rg 255.4 182 Td (BREACH) Tj ET
+BT /F2 6.5 Tf 0.39 0.45 0.55 rg 333.83 182 Td (CURRENT) Tj ET
+BT /F2 6.5 Tf 0.39 0.45 0.55 rg 429.94 182 Td (PEAK) Tj ET
+BT /F2 6.5 Tf 0.39 0.45 0.55 rg 456.89 182 Td (DAYS IN WA\205) Tj ET
+BT /F2 6.5 Tf 0.39 0.45 0.55 rg 509.83 182 Td (DAYS IN BR\205) Tj ET
+q 0.89 0.91 0.94 RG 0.6 w 40 177 m 555 177 l S Q
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 44 167.5 Td (Counterparty exposu\205) Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 177.04 167.5 Td (R 500k) Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 254.86 167.5 Td (R 1.00m) Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 365.6 167.5 Td () Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 448 167.5 Td () Tj ET
+BT /F4 7.5 Tf 0.12 0.16 0.23 rg 495 167.5 Td (0) Tj ET
+BT /F4 7.5 Tf 0.12 0.16 0.23 rg 546.5 167.5 Td (0) Tj ET
+q 0.95 0.96 0.98 RG 0.4 w 40 164 m 555 164 l S Q
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 44 154.5 Td (Coverage) Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 179.54 154.5 Td (80.0%) Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 261.94 154.5 Td (65.0%) Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 344.34 154.5 Td (86.0%) Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 426.74 154.5 Td (86.0%) Tj ET
+BT /F4 7.5 Tf 0.12 0.16 0.23 rg 495 154.5 Td (0) Tj ET
+BT /F4 7.5 Tf 0.12 0.16 0.23 rg 546.5 154.5 Td (0) Tj ET
+q 0.95 0.96 0.98 RG 0.4 w 40 151 m 555 151 l S Q
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 44 141.5 Td (Margin at risk) Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 179.54 141.5 Td (25.0%) Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 261.94 141.5 Td (40.0%) Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 344.34 141.5 Td (24.0%) Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 426.74 141.5 Td (24.0%) Tj ET
+BT /F4 7.5 Tf 0.12 0.16 0.23 rg 495 141.5 Td (0) Tj ET
+BT /F4 7.5 Tf 0.12 0.16 0.23 rg 546.5 141.5 Td (0) Tj ET
+q 0.95 0.96 0.98 RG 0.4 w 40 138 m 555 138 l S Q
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 44 128.5 Td (Open position) Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 174.96 128.5 Td (3.0 MW) Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 257.36 128.5 Td (4.0 MW) Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 365.6 128.5 Td () Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 448 128.5 Td () Tj ET
+BT /F4 7.5 Tf 0.12 0.16 0.23 rg 495 128.5 Td (0) Tj ET
+BT /F4 7.5 Tf 0.12 0.16 0.23 rg 546.5 128.5 Td (0) Tj ET
+q 0.95 0.96 0.98 RG 0.4 w 40 125 m 555 125 l S Q
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 44 115.5 Td (Spill) Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 179.54 115.5 Td (12.0%) Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 261.94 115.5 Td (22.0%) Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 344.34 115.5 Td (10.0%) Tj ET
+BT /F1 7.5 Tf 0.2 0.25 0.33 rg 426.74 115.5 Td (10.0%) Tj ET
+BT /F4 7.5 Tf 0.12 0.16 0.23 rg 495 115.5 Td (0) Tj ET
+BT /F4 7.5 Tf 0.12 0.16 0.23 rg 546.5 115.5 Td (0) Tj ET
+q 0.95 0.96 0.98 RG 0.4 w 40 112 m 555 112 l S Q
+BT /F2 9.5 Tf 0.12 0.16 0.23 rg 40 91 Td (Breach log) Tj ET
+0.97 0.98 0.99 rg 40 69 515 15 re f
+BT /F2 6.5 Tf 0.39 0.45 0.55 rg 44 74 Td (DATE) Tj ET
+BT /F2 6.5 Tf 0.39 0.45 0.55 rg 147 74 Td (LIMIT) Tj ET
+BT /F2 6.5 Tf 0.39 0.45 0.55 rg 322.97 74 Td (VALUE) Tj ET
+BT /F2 6.5 Tf 0.39 0.45 0.55 rg 409.73 74 Td (BREACH AT) Tj ET
+BT /F2 6.5 Tf 0.39 0.45 0.55 rg 456 74 Td (CLEARED) Tj ET
+q 0.89 0.91 0.94 RG 0.6 w 40 69 m 555 69 l S Q
+BT /F3 7 Tf 0.39 0.45 0.55 rg 40 60 Td (No rows for this period.) Tj ET
+q 0.89 0.91 0.94 RG 0.5 w 40 34 m 555 34 l S Q
+BT /F1 6.5 Tf 0.39 0.45 0.55 rg 40 24 Td (Trader 1 \267 PREVIEW \267 Page 1 of 2) Tj ET
+BT /F2 6.5 Tf 0.75 0.07 0.24 rg 497.23 24 Td (SIMULATED DATA) Tj ET
+
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 10 0 R /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R /F4 6 0 R >> >> >>
+endobj
+10 0 obj
+<< /Length 2156 >>
+stream
+q BT /F2 64 Tf 0.99 0.91 0.93 rg 0.71 0.71 -0.71 0.71 130.9 210.5 Tm (SIMULATED) Tj ET Q
+BT /F2 7.5 Tf 0.28 0.33 0.41 rg 40 796 Td (Risk Limits and Exposure \267 Trader 1 \267 5 books \267 Sep 2026) Tj ET
+q 0.89 0.91 0.94 RG 0.5 w 40 790 m 555 790 l S Q
+BT /F2 9.5 Tf 0.12 0.16 0.23 rg 40 771 Td (Approvals) Tj ET
+0.97 0.98 0.99 rg 40 749 515 15 re f
+BT /F2 6.5 Tf 0.39 0.45 0.55 rg 44 754 Td (KIND) Tj ET
+BT /F2 6.5 Tf 0.39 0.45 0.55 rg 147 754 Td (REQUESTED) Tj ET
+BT /F2 6.5 Tf 0.39 0.45 0.55 rg 250 754 Td (DECIDED) Tj ET
+BT /F2 6.5 Tf 0.39 0.45 0.55 rg 353 754 Td (OUTCOME) Tj ET
+BT /F2 6.5 Tf 0.39 0.45 0.55 rg 456 754 Td (NOTE) Tj ET
+q 0.89 0.91 0.94 RG 0.6 w 40 749 m 555 749 l S Q
+BT /F3 7 Tf 0.39 0.45 0.55 rg 40 740 Td (No rows for this period.) Tj ET
+BT /F2 7 Tf 0.39 0.45 0.55 rg 40 716 Td (EXCEPTIONS AND NEXT STEPS) Tj ET
+BT /F1 8.5 Tf 0.2 0.25 0.33 rg 40 702 Td (Nothing needs your attention for this period.) Tj ET
+BT /F2 7 Tf 0.39 0.45 0.55 rg 40 678 Td (NOTES AND METHOD) Tj ET
+BT /F1 7 Tf 0.28 0.33 0.41 rg 40 666 Td (Grades present: Estimated \(VaR and expected shortfall\).) Tj ET
+BT /F1 7 Tf 0.28 0.33 0.41 rg 40 655 Td (Method: Each active limit is read against its book's risk snapshots: the metric's value \(for a pool- or counterparty-scoped limit, that pool's or counterparty's value\), the) Tj ET
+BT /F1 7 Tf 0.28 0.33 0.41 rg 40 646 Td (level in the limit's direction, the peak and the days in warn and in breach. Utilisation is the value over the breach value \(the breach value over the value for a limit) Tj ET
+BT /F1 7 Tf 0.28 0.33 0.41 rg 40 637 Td (breached from below\). A breach is cleared on the next snapshot of its book that does not record it. VaR and expected shortfall come from the one-day risk distribution.) Tj ET
+BT /F1 7 Tf 0.28 0.33 0.41 rg 40 626 Td (Sources: WB.Strategy.RiskLimit; WB.Strategy.RiskSnapshot; WB.Strategy.RiskDistributionSnapshot; WB.Org.ApprovalRequest; WB.Brp.KillSwitchEvent.) Tj ET
+q 0.89 0.91 0.94 RG 0.5 w 40 34 m 555 34 l S Q
+BT /F1 6.5 Tf 0.39 0.45 0.55 rg 40 24 Td (Trader 1 \267 PREVIEW \267 Page 2 of 2) Tj ET
+BT /F2 6.5 Tf 0.75 0.07 0.24 rg 497.23 24 Td (SIMULATED DATA) Tj ET
+
+endstream
+endobj
+xref
+0 11
+0000000000 65535 f 
+0000000009 00000 n 
+0000001109 00000 n 
+0000001172 00000 n 
+0000001242 00000 n 
+0000001317 00000 n 
+0000001395 00000 n 
+0000001463 00000 n 
+0000001619 00000 n 
+0000008118 00000 n 
+0000008275 00000 n 
+trailer
+<< /Size 11 /Root 1 0 R >>
+startxref
+10484
+%%EOF

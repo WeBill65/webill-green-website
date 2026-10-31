@@ -1103,6 +1103,17 @@
     films.forEach(function (video) { io.observe(video); });
   }
 
+  /* ---------- Reporting: a catalogue entry opens its sample in the viewer ---------- */
+
+  function initSampleLinks() {
+    document.addEventListener("click", function (e) {
+      var link = e.target.closest && e.target.closest("[data-show-sample]");
+      if (!link) return;
+      var tab = document.getElementById(link.getAttribute("data-show-sample"));
+      if (tab) tab.click();
+    });
+  }
+
   // Shared helpers for page-specific instruments (instruments.js).
   window.WG = {
     fmtNum: fmtNum,
@@ -1128,6 +1139,7 @@
     initHubSpotForm();
     initRanges();
     initFilms();
+    initSampleLinks();
     document.dispatchEvent(new CustomEvent("wg:ready"));
   }
 
