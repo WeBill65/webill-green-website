@@ -709,7 +709,12 @@
           t.setAttribute("aria-selected", String(on));
           t.tabIndex = on ? 0 : -1;
           var panel = document.getElementById(t.getAttribute("aria-controls"));
-          if (panel) panel.hidden = !on;
+          if (panel) {
+            // A clicked tab eases its panel in; arrow keys switch instantly.
+            if (on && panel.hidden && !focus) panel.setAttribute("data-enter", "");
+            else panel.removeAttribute("data-enter");
+            panel.hidden = !on;
+          }
         });
         if (focus) tab.focus();
       }

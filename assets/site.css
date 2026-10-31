@@ -37,6 +37,7 @@
   --radius-plate: 14px;
   --radius-pill: 999px;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --header-h: 72px;
 }
 
@@ -79,8 +80,10 @@ a {
   text-underline-offset: 0.18em;
 }
 
-a:hover {
-  color: var(--deep);
+@media (hover: hover) and (pointer: fine) {
+  a:hover {
+    color: var(--deep);
+  }
 }
 
 p {
@@ -148,8 +151,10 @@ textarea {
   color: #fff;
 }
 
-.skip-link:hover {
-  color: #fff;
+@media (hover: hover) and (pointer: fine) {
+  .skip-link:hover {
+    color: #fff;
+  }
 }
 
 /* ---------- Layout ---------- */
@@ -323,8 +328,10 @@ textarea {
   text-decoration: none;
   cursor: pointer;
   transition: background-color 160ms var(--ease), border-color 160ms var(--ease), color 160ms var(--ease),
-    box-shadow 200ms var(--ease), transform 120ms var(--ease);
+    box-shadow 200ms var(--ease), transform 140ms var(--ease-out);
   white-space: nowrap;
+  position: relative;
+  isolation: isolate;
 }
 
 .btn:active {
@@ -336,10 +343,29 @@ textarea {
   color: #fff;
 }
 
-.btn--ink:hover {
-  color: #fff;
+/* A gradient cannot transition, so it sits on its own layer and fades in. */
+.btn--ink::before {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  z-index: -1;
+  border-radius: inherit;
   background: var(--gradient);
-  box-shadow: 0 10px 22px -10px rgb(5 150 105 / 0.65);
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn--ink:hover {
+    color: #fff;
+    box-shadow: 0 10px 22px -10px rgb(5 150 105 / 0.65);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn--ink:hover::before {
+    opacity: 1;
+  }
 }
 
 .btn--ghost {
@@ -348,10 +374,12 @@ textarea {
   border-color: rgb(33 42 52 / 0.28);
 }
 
-.btn--ghost:hover {
-  color: var(--deep);
-  border-color: var(--signal);
-  background: var(--wash);
+@media (hover: hover) and (pointer: fine) {
+  .btn--ghost:hover {
+    color: var(--deep);
+    border-color: var(--signal);
+    background: var(--wash);
+  }
 }
 
 .btn--small {
@@ -376,8 +404,10 @@ textarea {
   transition: text-decoration-color 160ms var(--ease);
 }
 
-.text-link:hover {
-  text-decoration-color: currentColor;
+@media (hover: hover) and (pointer: fine) {
+  .text-link:hover {
+    text-decoration-color: currentColor;
+  }
 }
 
 /* ---------- Status chips (honest framing) ---------- */
@@ -413,10 +443,26 @@ textarea {
   color: var(--readout);
 }
 
+.chip--live {
+  position: relative;
+}
+
 .chip--live::before {
   background: var(--live);
-  box-shadow: 0 0 0 0 rgb(16 185 129 / 0.55);
-  animation: pulse 2s ease-out infinite;
+}
+
+.chip--live::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  margin-top: -3.5px;
+  border-radius: 50%;
+  background: var(--live);
+  pointer-events: none;
+  animation: wg-ping 2s var(--ease-out) infinite;
 }
 
 .chip--simulated,
@@ -453,15 +499,15 @@ textarea {
   border-color: var(--signal);
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgb(16 185 129 / 0.5);
+@keyframes wg-ping {
+  from {
+    transform: scale(1);
+    opacity: 0.5;
   }
-  70% {
-    box-shadow: 0 0 0 8px rgb(16 185 129 / 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgb(16 185 129 / 0);
+  70%,
+  to {
+    transform: scale(2.4);
+    opacity: 0;
   }
 }
 
@@ -517,9 +563,11 @@ textarea {
   transition: color 150ms var(--ease), background-color 150ms var(--ease);
 }
 
-.site-nav a:hover {
-  background: rgb(5 150 105 / 0.08);
-  color: var(--deep);
+@media (hover: hover) and (pointer: fine) {
+  .site-nav a:hover {
+    background: rgb(5 150 105 / 0.08);
+    color: var(--deep);
+  }
 }
 
 .site-nav a[aria-current="page"] {
@@ -596,10 +644,12 @@ textarea {
   text-decoration: none;
 }
 
-.site-footer a:hover {
-  color: #fff;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+@media (hover: hover) and (pointer: fine) {
+  .site-footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
 }
 
 .site-footer__top {
@@ -757,20 +807,25 @@ textarea {
 }
 
 .clock__line--now {
-  display: flex;
-  gap: 9px;
-  align-items: baseline;
+  position: relative;
+  padding-left: 17px;
 }
 
-.clock__line--now::before {
+.clock__line--now::before,
+.clock__line--now::after {
   content: "";
-  flex: none;
+  position: absolute;
+  left: 0;
+  top: calc(0.7em - 4px);
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: var(--live);
-  transform: translateY(-1px);
-  animation: pulse 2s ease-out infinite;
+}
+
+.clock__line--now::after {
+  pointer-events: none;
+  animation: wg-ping 2s var(--ease-out) infinite;
 }
 
 .clock__honest {
@@ -877,8 +932,10 @@ textarea {
   transition: background-color 160ms var(--ease);
 }
 
-.day__col:hover {
-  background: rgb(5 150 105 / 0.07);
+@media (hover: hover) and (pointer: fine) {
+  .day__col:hover {
+    background: rgb(5 150 105 / 0.07);
+  }
 }
 
 .day__col[aria-pressed="true"] {
@@ -1505,7 +1562,7 @@ textarea {
   background: var(--gradient);
   transform: scaleY(0);
   transform-origin: top;
-  transition: transform 300ms var(--ease);
+  transition: transform 300ms var(--ease-out);
 }
 
 .spine__stop {
@@ -1522,8 +1579,10 @@ textarea {
   transition: color 200ms var(--ease);
 }
 
-.spine__stop a:hover {
-  color: var(--ink);
+@media (hover: hover) and (pointer: fine) {
+  .spine__stop a:hover {
+    color: var(--ink);
+  }
 }
 
 .spine__stop::before {
@@ -2053,9 +2112,11 @@ button.node {
   border-radius: 16px;
 }
 
-button.node:hover .node__symbol {
-  border-color: var(--signal);
-  background: var(--wash);
+@media (hover: hover) and (pointer: fine) {
+  button.node:hover .node__symbol {
+    border-color: var(--signal);
+    background: var(--wash);
+  }
 }
 
 button.node[aria-pressed="true"] .node__symbol {
@@ -2182,8 +2243,10 @@ button.node[aria-pressed="true"] .node__symbol {
   transition: background-color 140ms var(--ease);
 }
 
-.ledger tbody tr[data-pair]:hover td {
-  background: var(--wash);
+@media (hover: hover) and (pointer: fine) {
+  .ledger tbody tr[data-pair]:hover td {
+    background: var(--wash);
+  }
 }
 
 .ledger tbody tr.is-lit td {
@@ -2284,9 +2347,11 @@ button.node[aria-pressed="true"] .node__symbol {
   transition: background-color 160ms var(--ease), color 160ms var(--ease), box-shadow 160ms var(--ease);
 }
 
-.tab:hover {
-  color: var(--ink);
-  background: rgb(255 255 255 / 0.7);
+@media (hover: hover) and (pointer: fine) {
+  .tab:hover {
+    color: var(--ink);
+    background: rgb(255 255 255 / 0.7);
+  }
 }
 
 .tab[aria-selected="true"] {
@@ -2388,7 +2453,7 @@ button.node[aria-pressed="true"] .node__symbol {
   background: rgb(33 42 52 / 0.62);
   color: #fff;
   cursor: pointer;
-  transition: background-color 160ms ease, transform 140ms var(--ease);
+  transition: background-color 160ms ease, transform 140ms var(--ease-out);
 }
 
 .film-toggle:active {
@@ -2475,8 +2540,10 @@ button.node[aria-pressed="true"] .node__symbol {
   white-space: nowrap;
 }
 
-.role-btn:hover {
-  color: var(--ink);
+@media (hover: hover) and (pointer: fine) {
+  .role-btn:hover {
+    color: var(--ink);
+  }
 }
 
 .role-btn[aria-selected="true"] {
@@ -2497,6 +2564,19 @@ button.node[aria-pressed="true"] .node__symbol {
 
 .role-panel[hidden] {
   display: none;
+}
+
+.room-panel[data-enter],
+.role-panel[data-enter] {
+  transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out);
+}
+
+@starting-style {
+  .room-panel[data-enter],
+  .role-panel[data-enter] {
+    opacity: 0;
+    transform: translateY(6px);
+  }
 }
 
 .role-panel__job {
@@ -3051,9 +3131,11 @@ input[type="range"]::-moz-range-thumb {
   border: 2.5px solid var(--ink);
 }
 
-input[type="range"]:hover::-webkit-slider-thumb {
-  border-color: var(--signal);
-  transform: scale(1.08);
+@media (hover: hover) and (pointer: fine) {
+  input[type="range"]:hover::-webkit-slider-thumb {
+    border-color: var(--signal);
+    transform: scale(1.08);
+  }
 }
 
 input[type="range"]:focus-visible {
@@ -3822,7 +3904,7 @@ input[type="range"]:focus-visible::-webkit-slider-thumb {
 
 .day.is-animating .day__col .bar,
 .day.is-animating .day__col .bar__short {
-  animation: wg-rise 520ms var(--ease) both;
+  animation: wg-rise 520ms var(--ease-out) both;
   animation-delay: calc(var(--i, 0) * 34ms);
 }
 
@@ -3831,20 +3913,40 @@ input[type="range"]:focus-visible::-webkit-slider-thumb {
   animation: wg-fade 500ms var(--ease) 760ms both;
 }
 
+/* Reduced motion drops movement and keeps colour and opacity feedback.
+   The hero draw-in never starts: site.js skips it when this preference is set. */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    transition-delay: 0ms !important;
-  }
-
   html {
     scroll-behavior: auto;
   }
 
+  .btn:active,
+  .film-toggle:active {
+    transform: none;
+  }
+
+  .chip--live::after,
+  .clock__line--now::after {
+    animation: none;
+    opacity: 0;
+  }
+
+  .menu-toggle__bars span,
+  .spine__progress,
+  .spine__stop::before,
+  input[type="range"]::-webkit-slider-thumb {
+    transition-property: opacity, background-color, border-color, color;
+  }
+
+  input[type="range"]:hover::-webkit-slider-thumb {
+    transform: none;
+  }
+
+  .site-nav.is-open,
+  .room-panel[data-enter],
+  .role-panel[data-enter] {
+    transition-property: opacity;
+  }
 }
 
 /* ---------- Responsive ---------- */
@@ -3912,6 +4014,15 @@ input[type="range"]:focus-visible::-webkit-slider-thumb {
     background: var(--ground);
     border-bottom: 1px solid var(--rule);
     box-shadow: 0 24px 40px -24px rgb(33 42 52 / 0.3);
+    transform-origin: top;
+    transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out);
+  }
+
+  @starting-style {
+    .site-nav.is-open {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
   }
 
   .site-nav.is-open a {
@@ -4373,9 +4484,11 @@ input[type="range"]:focus-visible::-webkit-slider-thumb {
   transition: color 160ms var(--ease), border-color 160ms var(--ease);
 }
 
-.page-next a:hover {
-  color: var(--deep);
-  border-color: var(--signal);
+@media (hover: hover) and (pointer: fine) {
+  .page-next a:hover {
+    color: var(--deep);
+    border-color: var(--signal);
+  }
 }
 
 .page-next strong {
@@ -5086,9 +5199,11 @@ input[type="range"]:focus-visible::-webkit-slider-thumb {
   box-shadow: inset 0 0 0 1.5px var(--line-strong);
 }
 
-.site-nav a.site-nav__edge:hover {
-  background: var(--line);
-  color: var(--deep);
+@media (hover: hover) and (pointer: fine) {
+  .site-nav a.site-nav__edge:hover {
+    background: var(--line);
+    color: var(--deep);
+  }
 }
 
 .site-nav a.site-nav__edge[aria-current="page"] {
